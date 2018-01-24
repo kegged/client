@@ -34,5 +34,11 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: [
+    '~/plugins/ElementUI'
+  ],
+  css: [
+    'node_modules/element-ui/lib/theme-chalk/index.css'
+  ]
 }
