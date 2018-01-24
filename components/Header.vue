@@ -1,23 +1,24 @@
 <template>
-  <el-menu class="header-root" mode="horizontal">
-    <h1 class="header-title">Learning</h1>
-    <div class="nav-items">
-      <el-menu-item index="1">Home</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">Cities</template>
-          <el-menu-item index="2-1">Raleigh</el-menu-item>
-          <el-menu-item index="2-2">Charlotte</el-menu-item>
-          <el-menu-item index="2-3">Wilmington</el-menu-item>
-          <el-menu-item index="2-4">Asheville</el-menu-item>
-          <el-menu-item index="2-5">Durham</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="3">Contact</el-menu-item>
-    </div>
+  <el-menu
+    :default-active="activeIndex2"
+    class="header-root"
+    mode="horizontal"
+    background-color="#545c64"
+    text-color="#fccb5d"
+    active-text-color="#f18e1c">
+      <img class="header-img" src="../static/keg.png" alt="keg pic">
+      <h1 class="header-title">Kegged.</h1>
+      <span class="header-span">Craft your taste.</span>
+      <div class="nav-items">
+        <el-menu-item index="1">Home</el-menu-item>
+        <el-menu-item index="2">Cities</el-menu-item>
+        <el-menu-item index="3">Breweries</el-menu-item>
+        <el-menu-item index="4">Login</el-menu-item>
+      </div>
   </el-menu>
 </template>
 
 <style>
-
 .header-root {
   display: flex;
   width: 100;
@@ -28,6 +29,22 @@
 .header-title {
   margin: 0px 15px;
   font-weight: 500;
+  outline: none !important;
+}
+
+.header-title, .header-span {
+  color: #fccb5d;
+  font-weight: bold;
+}
+
+.header-span {
+  padding-top: 8px;
+  font-size: 1.1em;
+}
+
+.header-img {
+  max-height: 40px;
+  margin-left: 15px;
 }
 
 .nav-items {

@@ -20,7 +20,7 @@ export default {
 
 <style>
 html {
-  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: 'Courier', sans-serif;
 }
 
 html, body, #header, #main, #footer {
@@ -36,6 +36,5 @@ html, body, #header, #main, #footer {
 
 #main {
   flex-grow: 1;
-  background: green;
 }
 </style>
