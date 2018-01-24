@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "element-ui": "^2.0.11",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
