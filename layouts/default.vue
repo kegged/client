@@ -37,9 +37,7 @@ html, body, #header, #main, #footer {
 #main {
   flex-grow: 1;
   background-color: #f8f8ff;
-}
-
-#footer {
-  margin-top: 16px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 </style>
