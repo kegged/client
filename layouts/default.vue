@@ -36,5 +36,6 @@ html, body, #header, #main, #footer {
 
 #main {
   flex-grow: 1;
+  background-color: #E8E8E8;
 }
 </style>

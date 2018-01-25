@@ -1,57 +1,59 @@
-<template class="footer">
-  <el-row><div class="container">
-    <el-row :gutter="20"><div class="footer-main">
-      <el-row><h4>Links</h4></el-row>
-      <el-row><a href="" taget="_blank" class="links">GitHub</a></el-row>
-      <el-row><a href="">Home</a></el-row>
-      <el-row><a href="">Cities</a></el-row>
-      <el-row><a href="">Login</a></el-row>
-      <el-row><a href="">Sign up</a></el-row>
-    </div></el-row>
-    <div class="footer-main" :gutter="20">
-      <h4>Community</h4>
-      <a href="">Feedback</a>
-      <br>
-      <a href=""> Meet Ups</a>
-    </div>
-    <div class="footer-social" :gutter="20">
-      <h4>Social Media</h4>
-      <a href="">
-        <i class="el-icon-view"></i>
-      </a>
-      <a href=""></a>
-
-    </div>
-  </div></el-row>
+<template>
+ <el-footer class="footer">
+    <el-row :gutter="0"><div class="container">
+      <!-- links -->
+      <el-col :span="8"><div class="footer-main">
+        <el-row> <h4> Links</h4> </el-row>
+        <el-row><a href="" class="links">GitHub</a></el-row>
+        <el-row><a href="">Home</a></el-row>
+        <el-row><a href="">Cities</a></el-row>
+        <el-row><a href="">Login</a></el-row>
+        <el-row><a href="">Sign up</a></el-row>
+      </div></el-col>
+      <!-- Community -->
+      <el-col :span="8"><div class="footer-main">
+        <el-row><h4>Community</h4></el-row>
+        <el-row> <a href="">Feedback</a></el-row>
+        <el-row> <a href="">Meet up</a></el-row>
+      </div></el-col>
+      <!-- Social-Media -->
+      <el-col :span="8"> <div class="footer-social">
+        <el-row> <h4>Social Media</h4></el-row>
+        <el-row> <a href=""> <img class="header-img" src="../static/github.png" alt="github pic"></a>
+        <a href=""> <img class="header-img" src="../static/twitter.png" alt="twitter pic"></a></el-row>
+      </div></el-col>
+      <!-- Copy Rights -->
+      <el-row :gutter="20"> 
+        <el-col :span="12" :offset="6">
+        <div>
+          <h6 id="copy-right"> 
+            &copy; All Rights Rever
+            <br>
+            Charles Kenny Paul Zavattieri Emmanuel Mosqueda R.
+          </h6>
+        </div>
+      </el-col>
+    </el-row>
+   </div></el-row>
+   
+ </el-footer>
 
 </template>
 
 <style>
-.el-row{
-  margin-bottom: 20px;
-  &:last-child{
-    margin-bottom: 0;
-  }
+.footer{
+  align-self: auto;
+  background-color: #545c64;
+  color: #fccb5d;
 }
-.footer .footer-main {
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 110px;
+.container {
+ align-self: auto;
+  background-color: #545c64;
+  color: #fccb5d;
 }
-.footer {
-  width: 100%;
-  padding: 40px 150px;
-  padding-top: 40px;
-  padding-right: 150px;
-  padding-bottom: 40px;
-  padding-left: 150px;
-  margin-top: -340px;
-  box-sizing: border-box;
-  height: 340px; 
+#copy-right{
+  text-align: center;
 }
-
-
-
 
 </style>
 
