@@ -1,19 +1,18 @@
 <template>
   <el-menu
-    :default-active="activeIndex2"
     class="header-root"
     mode="horizontal"
     background-color="#545c64"
-    text-color="#fccb5d"
+    text-color="#ebb563"
     active-text-color="#f18e1c">
       <img class="header-img" src="../static/keg.png" alt="keg pic">
       <h1 class="header-title">Kegged.</h1>
       <span class="header-span">Craft your taste.</span>
       <div class="nav-items">
-        <el-menu-item index="1">Home</el-menu-item>
-        <el-menu-item index="2">Cities</el-menu-item>
-        <el-menu-item index="3">Breweries</el-menu-item>
-        <el-menu-item index="4">Login</el-menu-item>
+        <el-menu-item index="1">Home.</el-menu-item>
+        <el-menu-item index="2">Cities.</el-menu-item>
+        <el-menu-item index="3">Breweries.</el-menu-item>
+        <el-menu-item index="4">Login.</el-menu-item>
       </div>
   </el-menu>
 </template>
@@ -33,7 +32,7 @@
 }
 
 .header-title, .header-span {
-  color: #fccb5d;
+  color: #ebb563;
   font-weight: bold;
 }
 
