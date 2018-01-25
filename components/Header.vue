@@ -28,7 +28,6 @@
 .header-title {
   margin: 0px 15px;
   font-weight: 500;
-  outline: none !important;
 }
 
 .header-title, .header-span {
@@ -49,6 +48,9 @@
 .nav-items {
   margin-left: auto;
   display: flex; 
+}
+
+.nav-items, .header-title, .header-img, .header-span {
   outline: none !important;
 }
 </style>
