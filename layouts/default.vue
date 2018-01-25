@@ -21,11 +21,13 @@ export default {
 <style>
 html {
   font-family: 'Courier', sans-serif;
+  background-color: #545c64;
 }
 
 html, body, #header, #main, #footer {
   margin: 0;
   padding: 0;
+  background-color: #545c64;
 }
 
 #app {
