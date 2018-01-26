@@ -34,4 +34,9 @@ export default {
   align-items: center;
   width: 100%;
 }
+
+.city-buttons {
+  font-size: 2.4em;
+  margin: 10px;
+}
 </style>

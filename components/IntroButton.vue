@@ -19,8 +19,6 @@ export default {
 .intro-button {
   font-family: 'Courier', sans-serif;
   font-weight: bold;
-  font-size: 2.4em;
-  margin: 10px;
   border: 1px solid #545c64;
 }
 </style>

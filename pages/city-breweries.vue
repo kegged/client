@@ -33,4 +33,9 @@ export default {
   align-items: center;
   width: 100%;
 }
+
+.brewery-buttons {
+  font-size: 2.4em;
+  margin: 10px;
+}
 </style>
