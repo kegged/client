@@ -59,6 +59,7 @@
         </el-tab-pane>
       </el-tabs>
       <el-button
+        type="warning"
         :disabled="readyForSubmission"
         class="editor-save-button"
       >
@@ -140,12 +141,15 @@ export default {
 }
 
 .editor-save-button {
+  font-family: 'Courier', sans-serif;
+  font-weight: bold;
   margin-top: 10px;
-  margin-left: 10px;
+  border: 1px solid #545c64;
 }
 
 .title-input {
-  font-family: Courier, monospace;
+  font-family: 'Courier', sans-serif;
+  font-weight: bold;
   background: transparent;
   display: flex;
   outline: none !important;
@@ -153,17 +157,13 @@ export default {
   font-weight: 500;
   font-size: 1.5em;
   padding: 10px -10px;
-  margin-top: 15px;
-  margin-left: 5px;
   margin-bottom: 10px;
   width: 50%;
   min-width: 400px;
 }
 
-.el-tag + .el-tag,
-.button-new-tag,
-.input-new-tag {
-  margin-left: 5px;
+.el-tag {
+  margin-right: 5px;
 }
 
 .button-new-tag {
@@ -172,6 +172,7 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .input-new-tag {
@@ -180,9 +181,9 @@ export default {
   width: 90px;
 }
 
-.el-tag, .button-new-tag,
-.input-new-tag {
-  font-family: Courier, monospace;
+.el-tag, .button-new-tag {
+  font-family: 'Courier', sans-serif;
+  border: 1px solid #545c64;
 }
 
 .el-tabs--border-card>.el-tabs__header,
@@ -197,5 +198,11 @@ export default {
 
 .el-tabs__nav-scroll {
   background: #545c64 !important;
+}
+
+/* tag text */
+span.el-tag, i.el-tag__close.el-icon-close {
+  color: #f8f8ff;
+  font-weight: bold;
 }
 </style>
