@@ -1,16 +1,37 @@
 <template>
   <!-- insert custom tag into template -->
-  <city-buttons></city-buttons>
+  <div class="city-buttons-root">
+    <!-- loop through all cities, create city button for each -->
+    <!-- key and prop are cities -->
+    <city-buttons v-for="city in cities" :key="city" :text="city" class="city-buttons"/>
+  </div>
 </template>
 
 <script>
 // import city buttons object
-import { CityButtons } from '@/components'
+import { IntroButton } from '@/components'
 
 export default {
   components: {
     // create custom city buttons tag
-    'city-buttons': CityButtons
+    'city-buttons': IntroButton
+  },
+  // define data
+  data() {
+    return {
+      cities: ["Asheville", "Charlotte", "Durham", "Raleigh", "Wilmington" ]
+    }
   }
 }
 </script>
+
+<style>
+/* flex box for root */
+.city-buttons-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+</style>
