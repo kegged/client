@@ -1,0 +1,54 @@
+<template>
+  <div class="container">
+      <el-row class="main-container" :gutter="20">
+           <h1 class="title"> Our Kegged Team </h1>
+        <!-- Charles Kenny -->
+        <el-col :span="6" :offset="3"> <p class="profile"> <img src="charles-k.jpeg" style="width:120px;height:120px;margin-right:15px;" class="img-circle"> 
+            Lorem Ipsum is simply dummy
+            text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        </p> </el-col>
+        <!-- Paul  -->
+        <el-col :span="6"> <p class="profile"> <img src="paul-z.jpeg" style="width:120px;height:120px;margin-right:15px;" class="img-circle"> 
+            Lorem Ipsum is simply dummy
+            text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        </p> </el-col>
+        <!-- Emmanuel -->
+        <el-col :span="6"> <p class="profile"> <img src="eman3.jpeg" style="width:120px;height:120px;margin-right:15px;" class="img-circle">
+            Lorem Ipsum is simply dummy
+            text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </p></el-col>
+      </el-row>
+  </div>
+</template>
+
+<style>
+.container{
+  text-align: center;
+}
+.title {
+     color: #545c64;
+  font-weight: bolder;
+  margin-bottom: 12px;
+}
+.profile{
+    border-radius: 25px;
+    background-color: #ebb563;
+    margin-left:55px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    width: 250px;
+    border: 1px solid #545c64;
+    color: #545c64;
+}
+.img-circle {
+    border-radius: 50%;
+    float: left;
+}
+
+</style>
+
