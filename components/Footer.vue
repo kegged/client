@@ -42,38 +42,33 @@
   background-color: #545c64;
   color: #ebb563;
 }
-
 .footer-sections {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-
 .footer-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-
 .footer-section h4 {
   margin-bottom: 10px;
 }
-
 .footer-copyright {
   text-align: center;
 }
-
 .footer-links {
   text-decoration: none;
   color: #f8f8ff;
   font-size: 0.8em;
   line-height: 1.5em;
 }
-
 .footer-links:hover {
   text-decoration: underline;
 }
 </style>
+
 
 
