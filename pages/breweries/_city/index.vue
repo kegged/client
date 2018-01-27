@@ -7,9 +7,11 @@
     <el-main>
       <!-- insert custom tag into template -->
       <div class="brewery-buttons-root">
-        <!-- loop through all breweries, create brewery button for each -->
+        <!-- loop through all breweries, create brewery button and link for each -->
         <!-- key and prop are breweries -->
-        <brewery-buttons v-for="brewery in breweries" :key="brewery" :text="brewery" class="brewery-buttons"/>
+        <nuxt-link v-for="brewery in breweries" :key="brewery" to="/breweries/city/brewery">
+          <brewery-buttons :text="brewery" class="brewery-buttons"/>
+        </nuxt-link>
       </div>
     </el-main>
   </el-container>
@@ -29,7 +31,7 @@ export default {
   data() {
     return {
       breweries: ["brewery 1", "brewery 2", "brewery 3", "brewery 4", "brewery 5" ],
-      city: "Placeholder city.",
+      city: "Placeholder City",
       cityPic: "http://via.placeholder.com/300?text=Placeholder.com+rocks!"
     }
   }
