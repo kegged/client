@@ -34,7 +34,6 @@
 
 <script>
   // import all components
-  import { AddPost } from '@/components'
   import { BreweryTitle } from '@/components'
   import { Brews } from '@/components'
   import { PostDisplay } from '@/components'
@@ -44,7 +43,6 @@
   export default {
     // create custom html tags
     components: {
-      'add-post': AddPost,
       'brewery-title': BreweryTitle,
       'brews': Brews,
       'post-display': PostDisplay,
