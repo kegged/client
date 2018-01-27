@@ -88,6 +88,3 @@
   max-height: 40px;
 }
 </style>
-
-
-
