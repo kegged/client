@@ -6,19 +6,19 @@
         <a class="footer-links" href="">Home</a>
         <a class="footer-links" href="">Cities</a>
         <a class="footer-links" href="">Breweries</a>
-        <a class="footer-links" href="">Log In</a>
+        <a class="footer-links" href="">Login</a>
       </div>
       <div class="footer-section">
         <h4>Community.</h4>
         <a class="footer-links" href="">Feedback</a>
-        <a class="footer-links" href="">Meet up</a>
+        <a class="footer-links" href="">Meetup</a>
       </div>
       <div class="footer-section">
         <h4>Social Media.</h4>
         <!-- fixme: replace these with svgs at some point -->
         <div>
-          <a href=""><img class="header-img" src="../static/github.png" alt="github pic"></a>
-          <a href=""><img class="header-img" src="../static/twitter.png" alt="twitter pic"></a>
+          <a href=""><img class="header-img-1" src="../static/github.png" alt="github pic"></a>
+          <a href=""><img class="header-img-2" src="../static/twitter.png" alt="twitter pic"></a>
         </div>
       </div>
     </div>
@@ -42,31 +42,49 @@
   background-color: #545c64;
   color: #ebb563;
 }
+
 .footer-sections {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
+
 .footer-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
+
 .footer-section h4 {
   margin-bottom: 10px;
 }
+
 .footer-copyright {
   text-align: center;
 }
+
 .footer-links {
   text-decoration: none;
   color: #f8f8ff;
   font-size: 0.8em;
   line-height: 1.5em;
 }
+
 .footer-links:hover {
   text-decoration: underline;
+}
+
+.header-img-1 {
+  margin-left: 0px;
+  margin-right: 5px;
+  max-height: 40px;
+}
+
+.header-img-2 {
+  margin-left: 5px;
+  margin-right: 0px;
+  max-height: 40px;
 }
 </style>
 
