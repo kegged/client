@@ -42,5 +42,6 @@
 thead.has-gutter {
   color: #ebb563;
   font-weight: bolder;
+  font-size: 1.3em;
 }
 </style>

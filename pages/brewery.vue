@@ -1,6 +1,9 @@
 <template>
+  <!-- layout -->
   <el-container>
+    <!-- header with logo, name, button to add post -->
     <el-header class="header-root">
+      <!-- components, define props for each -->
       <brewery-logo :breweryLogo="breweryInfo.logo" class="brewery-logo"/>
       <brewery-title :brewery="breweryInfo.brewery" class="brewery-title"/>
       <div class="add-post-root">
@@ -8,19 +11,29 @@
       </div>
     </el-header>
     <el-container>
+      <!-- brews aside -->
       <el-aside width="30%" class="aside-root">
         <h1 class="brews-title">Brews.</h1>
+        <!-- define props -->
         <brews :tableData="tableData"/>
       </el-aside>
+      <!-- main area with posts -->
       <el-main class="main-root">
+        <!-- define props, loop through all posts -->
         <h1 class="posts-title">Posts.</h1>
-        <post-display :postTitle="postData.title" :postAuthor="postData.author"/>
+        <post-display
+          v-for="post in postData"
+          :key="post.title"
+          :tagsList="post.tags"
+          :postTitle="post.title" 
+          :postAuthor="post.author"/>
       </el-main>
     </el-container>
   </el-container>  
 </template>
 
 <script>
+  // import all components
   import { AddPost } from '@/components'
   import { BreweryTitle } from '@/components'
   import { Brews } from '@/components'
@@ -29,6 +42,7 @@
   import { IntroButton } from '@/components'
 
   export default {
+    // create custom html tags
     components: {
       'add-post': AddPost,
       'brewery-title': BreweryTitle,
@@ -37,6 +51,7 @@
       'brewery-logo': BreweryLogo,
       'add-post-button': IntroButton
     },
+    // define data needed
     data() {
       return {
         tableData: [{
@@ -60,11 +75,27 @@
           logo: "http://via.placeholder.com/300?text=Placeholder.com+rocks!"
         },
         addPost: "Add new post.",
-        postData: {
-          title: "dummy title about placeholder brewery",
-          author: "dummy author",
+        postData: [
+        {
+          title: "dummy title about placeholder brewery 1",
+          author: "dummy author 1",
           tags: ["tag 1", "tag 2", "tag 3"]
-        }
+        },
+        {
+          title: "dummy title about placeholder brewery 2",
+          author: "dummy author 2",
+          tags: ["tag 4", "tag 5", "tag 6"]
+        },
+        {
+          title: "dummy title about placeholder brewery 3",
+          author: "dummy author 3",
+          tags: ["tag 7", "tag 8", "tag 9"]
+        },
+        {
+          title: "dummy title about placeholder brewery 4",
+          author: "dummy author 4",
+          tags: ["tag 10", "tag 11", "tag 12"]
+        }]
       }
     }
   }
