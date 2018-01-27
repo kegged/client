@@ -3,10 +3,12 @@
     <h1 class="welcome-message">Welcome to Kegged.</h1>
     <h3 class="welcome-message">We like North Carolina beer.</h3>
     <h3 class="welcome-message">We hope you do too.</h3>
-    <el-button  
+    <nuxt-link to="/cities">
+      <el-button  
       round
       type="warning"
       class="explore-nc-button">Explore NC</el-button>
+    </nuxt-link>
   </div>
 </template>
 

@@ -7,7 +7,9 @@
       <brewery-logo :breweryLogo="breweryInfo.logo" class="brewery-logo"/>
       <brewery-title :brewery="breweryInfo.brewery" class="brewery-title"/>
       <div class="add-post-root">
-        <add-post-button :text="addPost" class="add-post-button"/>
+        <nuxt-link to="/new-post">
+          <add-post-button :text="addPost" class="add-post-button"/>
+        </nuxt-link>
       </div>
     </el-header>
     <el-container>

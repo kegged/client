@@ -9,10 +9,18 @@
       <h1 class="header-title">Kegged.</h1>
       <span class="header-span">Craft your taste.</span>
       <div class="nav-items">
-        <el-menu-item index="1">Home.</el-menu-item>
-        <el-menu-item index="2">Cities.</el-menu-item>
-        <el-menu-item index="3">Breweries.</el-menu-item>
-        <el-menu-item index="4">Login.</el-menu-item>
+        <nuxt-link to="/">
+          <el-menu-item index="1">Home.</el-menu-item>
+        </nuxt-link>
+        <nuxt-link to="/cities">
+          <el-menu-item index="2">Cities.</el-menu-item>
+        </nuxt-link>
+        <nuxt-link to="/brewstack">
+          <el-menu-item index="3">Breweries.</el-menu-item>
+        </nuxt-link>
+        <nuxt-link to="/login">
+          <el-menu-item index="4">Login.</el-menu-item>
+        </nuxt-link>
       </div>
   </el-menu>
 </template>
