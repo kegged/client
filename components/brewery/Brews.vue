@@ -1,10 +1,12 @@
 <template>
   <div class="brew-table-root">
+    <!-- create brews table with tableData prop - will be array of objects-->
     <el-table
       :data="tableData"
       stripe
       style="width: 1000%"
       class="brew-table">
+      <!-- table columns with props equal to tableData object keys -->
       <el-table-column align="center" prop="brew" label="Beers"></el-table-column>
       <el-table-column align="center" prop="style" label="Style"></el-table-column>
     </el-table>
@@ -18,14 +20,9 @@
 </script>
 
 <style>
-
 .brew-table-root {
-  width: 70%;
+  width: 80%;
 }
-
-/* .brew-table {
- border: 1px solid #545c64;
-} */
 
 .el-table th {
   background-color: #545c64;

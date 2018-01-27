@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <el-row class="main-container" :gutter="20">
-           <h1 class="title"> Our Kegged Team </h1>
+           <h1 class="title">The Kegged Team.</h1>
         <!-- Charles Kenny -->
         <el-col :span="6" :offset="3"> <p class="profile"> <img src="charles-k.jpeg" style="width:120px;height:120px;margin-right:15px;" class="img-circle"> 
             Lorem Ipsum is simply dummy

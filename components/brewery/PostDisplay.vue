@@ -17,7 +17,6 @@
       <!-- display all the tags. need a prop for tagsList to loop through tags array -->
       <div class="post-tags-root">
         <el-tag
-          closable
           v-for="postTag in tagsList"
           :key="postTag"
           color="#ebb563"
