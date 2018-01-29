@@ -9,9 +9,11 @@
       <div class="brewery-buttons-root">
         <!-- loop through all breweries, create brewery button and link for each -->
         <!-- key and prop are breweries -->
-        <nuxt-link v-for="brewery in breweries" :key="brewery" to="/breweries/city/brewery">
-          <brewery-buttons :text="brewery" class="brewery-buttons"/>
-        </nuxt-link>
+        <div v-for="brewery in breweries" :key="brewery">
+          <nuxt-link to="/cities/city/brewery">
+            <brewery-buttons :text="brewery" class="brewery-buttons"/>
+          </nuxt-link>
+        </div>
       </div>
     </el-main>
   </el-container>
@@ -20,12 +22,12 @@
 <script>
 // import brewery buttons object
 import { CityHeader } from '@/components'
-import { IntroButton } from '@/components'
+import { Button } from '@/components'
 
 export default {
   components: {
     // create custom brewery buttons tag
-    'brewery-buttons': IntroButton,
+    'brewery-buttons': Button,
     'city-header': CityHeader
   },
   data() {
