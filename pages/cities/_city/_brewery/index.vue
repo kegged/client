@@ -40,7 +40,7 @@
   import { Brews } from '@/components'
   import { PostDisplay } from '@/components'
   import { BreweryLogo } from '@/components'
-  import { IntroButton } from '@/components'
+  import { Button } from '@/components'
 
   export default {
     // create custom html tags
@@ -49,7 +49,7 @@
       'brews': Brews,
       'post-display': PostDisplay,
       'brewery-logo': BreweryLogo,
-      'add-post-button': IntroButton
+      'add-post-button': Button
     },
     // define data needed
     data() {

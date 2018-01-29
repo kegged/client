@@ -1,9 +1,7 @@
 <template>
-    <el-container class="container">
+    <el-container class="profile-container">
             <div class="left-side">
-                <!-- <div class="buttons-root"> -->
                     <profile-button v-for="item in items" :key="item" :text="item" class="page-buttons" />
-                <!-- </div> -->
             </div>
             <div class="right-side">
                 <el-header class="pro-header">
@@ -15,7 +13,7 @@
                     <br>
                     <el-button id="follow-b" round>Follow</el-button>
                 </el-header>
-                <div class="main-profile">
+                <div>
                     <h3 id="bio-text"> Locals City</h3>
                         <p id="bio-text">:Raleigh</p>
                     <h3 id="bio-text"> Most Visited Brewery</h3>
@@ -28,9 +26,7 @@
 </template>
 
 <script>
-
 import { Button } from '@/components'
-
 
 export default {
     components: {
@@ -47,7 +43,7 @@ export default {
 
 <style>
 
-.container {
+.profile-container {
      display: flex;
      align-items: center;
      justify-content: center;
@@ -64,10 +60,10 @@ export default {
     align-items: center;
     justify-content: center;
 }
-
-.page-buttons {
-    margin: 10px 0px;
-}
+    .page-buttons {
+        margin: 10px 0px;
+        font-size: 1.8em;
+    }
 
 .right-side {
     width: 50%;
@@ -75,35 +71,40 @@ export default {
     background-color: #DCDCDC;
     border-radius: 10px;
 }
-.pro-header{
-    padding-top: 1%;
-    padding-bottom: 16%;
-    background-color: #545c64;
-    align-items: center;
-    justify-content: center;
-    color: #ebb563;
-    font-weight: bolder;
-    background-color: #545c64;
-    font-size: 1.8em;
-    text-align:justify;
-    border-radius: 10px;
-}
-#follow-b{
-    margin-top: 5px;
-    background: #ebb563;
-    color:#545c64;
-    font-weight: bold;
-}
-.img-circle {
-    border-radius: 50%;
-    float: left;
-}
+    .pro-header{
+        padding-top: 1%;
+        padding-bottom: 16%;
+        background-color: #545c64;
+        align-items: center;
+        justify-content: center;
+        color: #ebb563;
+        font-weight: bolder;
+        background-color: #545c64;
+        font-size: 1.8em;
+        text-align:justify;
+        border-radius: 10px;
+    }
+        .img-circle {
+            border-radius: 50%;
+            float: left;
+        }
+        #follow-b{
+            margin-top: 5px;
+            background: #ebb563;
+            color:#545c64;
+            font-weight: bold;
+        }
 #bio-text{
     margin-left: 15px;
 
 }
-
-
 </style>
+
+<style scoped>
+.el-button+.el-button {
+    margin-left: 0;
+}
+</style>
+
 
 
