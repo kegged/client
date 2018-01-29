@@ -7,6 +7,7 @@
         <nuxt-link class="footer-links" to="/cities">Cities</nuxt-link>
         <nuxt-link class="footer-links" to="/brewstack">Breweries</nuxt-link>
         <nuxt-link class="footer-links" to="/login">Login</nuxt-link>
+        <nuxt-link class="footer-links" to="/profile">Profile</nuxt-link>
       </div>
       <div class="footer-section">
         <h4>Community.</h4>
