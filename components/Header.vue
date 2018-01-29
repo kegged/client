@@ -6,7 +6,11 @@
     text-color="#ebb563"
     active-text-color="#f18e1c">
       <img class="header-img" src="../static/keg.png" alt="keg pic">
-      <h1 class="header-title">Kegged.</h1>
+      <h1 class="header-title">
+        <nuxt-link to="/" class="home-link">
+          Kegged.
+        </nuxt-link>
+      </h1>
       <span class="header-span">Craft your taste.</span>
       <div class="nav-items">
         <nuxt-link to="/">
@@ -16,7 +20,7 @@
           <el-menu-item index="2">Cities.</el-menu-item>
         </nuxt-link>
         <nuxt-link to="/brewstack">
-          <el-menu-item index="3">Breweries.</el-menu-item>
+          <el-menu-item index="3">Brew Stack.</el-menu-item>
         </nuxt-link>
         <nuxt-link to="/login">
           <el-menu-item index="4">Login.</el-menu-item>
@@ -39,6 +43,17 @@
 .header-title {
   margin: 0px 15px;
   font-weight: 500;
+}
+
+.home-link {
+  color: #ebb563;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.home-link:hover {
+  text-decoration: underline;
 }
 
 .header-title, .header-span {
