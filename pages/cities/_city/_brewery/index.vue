@@ -4,8 +4,8 @@
     <!-- header with logo, name, button to add post -->
     <el-header class="header-root">
       <!-- components, define props for each -->
-      <brewery-logo :breweryLogo="breweryInfo.logo" class="brewery-logo"/>
-      <brewery-title :brewery="breweryInfo.brewery" class="brewery-title"/>
+      <brewery-logo :breweryLogo="breweryData.logoUrl" class="brewery-logo"/>
+      <brewery-title :brewery="breweryData.name" class="brewery-title"/>
       <div class="add-post-root">
         <nuxt-link to="/new-post">
           <add-post-button :text="addPost" class="add-post-button"/>
@@ -17,7 +17,7 @@
       <el-aside width="30%" class="aside-root">
         <h1 class="brews-title">Brews.</h1>
         <!-- define props -->
-        <brews :tableData="tableData"/>
+        <brews :tableData="breweryData.brews"/>
       </el-aside>
       <!-- main area with posts -->
       <el-main class="main-root">
@@ -41,6 +41,7 @@
   import { PostDisplay } from '@/components'
   import { BreweryLogo } from '@/components'
   import { Button } from '@/components'
+  import axios from '@/plugins/axios'
 
   export default {
     // create custom html tags
@@ -54,26 +55,7 @@
     // define data needed
     data() {
       return {
-        tableData: [{
-          brew: 'placeholder',
-          style: 'ipa'
-        }, {
-          brew: 'placeholder',
-          style: 'porter'
-        }, {
-          brew: 'placeholder',
-          style: 'stout'
-        }, {
-          brew: 'placeholder',
-          style: 'pale ale'
-        }, {
-          brew: 'placeholder',
-          style: 'wheat'
-        }],
-        breweryInfo: {
-          brewery: "Placeholder Brewery.",
-          logo: "http://via.placeholder.com/300?text=Placeholder.com+rocks!"
-        },
+        breweryData: {},
         addPost: "Add new post.",
         postData: [
         {
@@ -97,6 +79,18 @@
           tags: ["tag 10", "tag 11", "tag 12"]
         }]
       }
+    },
+    computed: {
+      city() {
+        return this.$route.params.city
+      },
+      brewery() {
+        return this.$route.params.brewery
+      }
+    },
+    async created() {
+      const { data } = await axios.get(`/breweries/${this.city}/${this.brewery}`)
+      this.breweryData = data
     }
   }
 </script>

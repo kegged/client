@@ -2,16 +2,16 @@
   <el-container>
     <el-header>
       <!-- insert city header, define props -->
-      <city-header :city="city" :cityLogo="cityPic"/>
+      <city-header :city="city" :cityLogo="logo"/>
     </el-header>
     <el-main>
       <!-- insert custom tag into template -->
       <div class="brewery-buttons-root">
         <!-- loop through all breweries, create brewery button and link for each -->
         <!-- key and prop are breweries -->
-        <div v-for="brewery in breweries" :key="brewery">
-          <nuxt-link to="/cities/city/brewery">
-            <brewery-buttons :text="brewery" class="brewery-buttons"/>
+        <div v-for="brewery in breweries" :key="brewery.id">
+          <nuxt-link :to="`/cities/${city}/${brewery.slug}`">
+            <brewery-buttons :text="brewery.name" class="brewery-buttons"/>
           </nuxt-link>
         </div>
       </div>
@@ -23,6 +23,7 @@
 // import brewery buttons object
 import { CityHeader } from '@/components'
 import { Button } from '@/components'
+import axios from '@/plugins/axios'
 
 export default {
   components: {
@@ -32,10 +33,20 @@ export default {
   },
   data() {
     return {
-      breweries: ["brewery 1", "brewery 2", "brewery 3", "brewery 4", "brewery 5" ],
-      city: "Placeholder City",
-      cityPic: "http://via.placeholder.com/300?text=Placeholder.com+rocks!"
+      breweries: [],
     }
+  },
+  computed: {
+    city() {
+      return this.$route.params.city
+    },
+    logo() {
+      return `/cities/${this.city}.png`
+    }
+  },
+  async created() {
+    const { data } = await axios.get(`/cities/${this.city}`)
+    this.breweries = data.breweries
   }
 }
 </script>
