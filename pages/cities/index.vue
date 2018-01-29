@@ -4,7 +4,7 @@
     <!-- loop through all cities, create city button with link for each -->
     <!-- key and prop are cities -->
     <div v-for="city in cities" :key="city">
-      <nuxt-link to="/cities/city">
+      <nuxt-link :to="`cities/${city.toLowerCase()}`">
         <city-buttons :text="city" class="city-buttons"/>
       </nuxt-link>
     </div>

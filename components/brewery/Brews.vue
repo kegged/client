@@ -4,11 +4,11 @@
     <el-table
       :data="tableData"
       stripe
-      style="width: 1000%"
+      style="width: 100%"
       class="brew-table">
       <!-- table columns with props equal to tableData object keys -->
-      <el-table-column align="center" prop="brew" label="Beers"></el-table-column>
-      <el-table-column align="center" prop="style" label="Style"></el-table-column>
+      <el-table-column align="center" prop="name" label="Beers"></el-table-column>
+      <el-table-column align="center" prop="style.tag.name" label="Style"></el-table-column>
     </el-table>
   </div>
 </template>
