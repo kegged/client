@@ -22,12 +22,12 @@
 <script>
 // import brewery buttons object
 import { CityHeader } from '@/components'
-import { IntroButton } from '@/components'
+import { Button } from '@/components'
 
 export default {
   components: {
     // create custom brewery buttons tag
-    'brewery-buttons': IntroButton,
+    'brewery-buttons': Button,
     'city-header': CityHeader
   },
   data() {

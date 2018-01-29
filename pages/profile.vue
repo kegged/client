@@ -29,12 +29,12 @@
 
 <script>
 
-import {IntroButton} from '@/components'
+import {Button} from '@/components'
 
 
 export default {
     components: {
-        'profile-button': IntroButton
+        'profile-button': Button
     },
     data(){
         return{
