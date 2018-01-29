@@ -13,12 +13,12 @@
 
 <script>
 // import city buttons object
-import { IntroButton } from '@/components'
+import { Button } from '@/components'
 
 export default {
   components: {
     // create custom city buttons tag
-    'city-buttons': IntroButton
+    'city-buttons': Button
   },
   // define data
   data() {

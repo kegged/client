@@ -1,7 +1,7 @@
 // export components
 export { default as Footer } from './Footer'
 export { default as Header } from './Header'
-export { default as IntroButton } from './IntroButton'
+export { default as Button } from './Button'
 export { default as Editor } from './Editor'
 export { default as BreweryTitle } from './brewery/BreweryTitle'
 export { default as Brews } from './brewery/Brews'

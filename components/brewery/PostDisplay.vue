@@ -33,12 +33,12 @@
 
 <script>
   // import button 
-  import { IntroButton } from '@/components'
+  import { Button } from '@/components'
 
   // export the intro button component with View Post text and export necessary props
   export default {
     components: {
-      'view-post-button': IntroButton
+      'view-post-button': Button
     },
     data() {
       return {
