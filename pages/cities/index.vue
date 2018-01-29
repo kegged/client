@@ -3,9 +3,11 @@
   <div class="city-buttons-root">
     <!-- loop through all cities, create city button with link for each -->
     <!-- key and prop are cities -->
-    <nuxt-link v-for="city in cities" :key="city" to="/breweries/city">
-      <city-buttons :text="city" class="city-buttons"/>
-    </nuxt-link>
+    <div v-for="city in cities" :key="city">
+      <nuxt-link to="/cities/city">
+        <city-buttons :text="city" class="city-buttons"/>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
