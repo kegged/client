@@ -21,6 +21,9 @@
         <nuxt-link to="/login">
           <el-menu-item index="4">Login.</el-menu-item>
         </nuxt-link>
+        <nuxt-link to="/profile">
+          <el-menu-item index="4">Profile.</el-menu-item>
+        </nuxt-link>
       </div>
   </el-menu>
 </template>

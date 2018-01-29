@@ -19,9 +19,9 @@
         </el-col>
         <!-- Emmanuel -->
         <el-col :span="6"> <p class="profile"> <img src="eman.jpg" style="width:120px;height:120px;margin-right:15px;object-fit: cover;" class="img-circle">
-            Lorem Ipsum is simply dummy
-            text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            Hola, I'm Emmanuel. Beer plays a big role in my culture and over the years that role has grown into a passion for me.
+            Here at Kegged we're devoted developers that want to bring you outsider and locals the best experience when visiting and living in
+            NC with all its great breweries that it has to offer.
         </p>
         </el-col>
       </el-row>
