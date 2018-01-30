@@ -1,5 +1,7 @@
 <template>
   <el-menu
+    router
+    :default-active="$route.path"
     class="header-root"
     mode="horizontal"
     background-color="#545c64"
@@ -13,24 +15,42 @@
       </h1>
       <span class="header-span">Craft your taste.</span>
       <div class="nav-items">
-        <nuxt-link to="/">
-          <el-menu-item index="1">Home.</el-menu-item>
-        </nuxt-link>
-        <nuxt-link to="/cities">
-          <el-menu-item index="2">Cities.</el-menu-item>
-        </nuxt-link>
-        <nuxt-link to="/brewstack">
-          <el-menu-item index="3">Brew Stack.</el-menu-item>
-        </nuxt-link>
-        <nuxt-link to="/login">
-          <el-menu-item index="4">Login.</el-menu-item>
-        </nuxt-link>
-        <nuxt-link to="/profile">
-          <el-menu-item index="4">Profile.</el-menu-item>
-        </nuxt-link>
+        <template v-for="(item, index) in navItems">
+          <el-menu-item
+            :key="index"
+            :index="item.route"
+            :route="item.route"
+          >
+            {{ item.label }}
+          </el-menu-item>
+        </template>
       </div>
   </el-menu>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data () {
+    return {
+      baseNavItems: [
+        { label: 'Home', route: '/'  },
+        { label: 'Cities', route: '/cities' },
+        { label: 'Brew Stack', route: '/brewstack' },
+      ]
+    }
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated']),
+    navItems() {
+      return this.isAuthenticated ?
+        [ ...this.baseNavItems, { label: 'Profile', route: '/profile' } ] :
+        [ ...this.baseNavItems, { label: 'Login', route: '/login' } ]
+    }
+  }
+}
+</script>
 
 <style>
 .header-root {
