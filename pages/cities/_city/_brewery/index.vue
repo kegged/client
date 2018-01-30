@@ -1,28 +1,36 @@
 <template>
   <!-- layout -->
   <el-container>
-    <!-- header with logo, name, button to add post -->
-    <el-header class="header-root">
-      <!-- components, define props for each -->
-      <brewery-logo :breweryLogo="breweryData.logoUrl" class="brewery-logo"/>
-      <brewery-title :brewery="breweryData.name" class="brewery-title"/>
-      <div class="add-post-root">
-        <nuxt-link to="/new-post">
-          <add-post-button :text="addPost" class="add-post-button"/>
-        </nuxt-link>
+    <!-- brews aside -->
+    <el-aside width="30%" class="aside-root">
+      <div class="brewery-logo-root">
+        <brewery-logo :breweryLogo="breweryData.logoUrl" class="brewery-logo"/>
       </div>
-    </el-header>
+      <h1 class="brews-title">Brews.</h1>
+      <!-- define props -->
+      <brews class="brews-table" :tableData="breweryData.brews"/>
+      <!-- link to brewery's website -->
+      <a :href="`${breweryData.websiteUrl}`" target="_blank">
+        <visit-website-button :text="visitUrl" class="visit-website-button"/>
+      </a>
+    </el-aside>
     <el-container>
-      <!-- brews aside -->
-      <el-aside width="30%" class="aside-root">
-        <h1 class="brews-title">Brews.</h1>
-        <!-- define props -->
-        <brews :tableData="breweryData.brews"/>
-      </el-aside>
+      <!-- header with logo, name, button to add post -->
+      <el-header class="header-root">
+        <!-- components, define props for each -->
+        <brewery-title :brewery="breweryData.name" class="brewery-title"/>
+      </el-header>
       <!-- main area with posts -->
       <el-main class="main-root">
         <!-- define props, loop through all posts -->
-        <h1 class="posts-title">Posts.</h1>
+        <div class="main-content-header">
+          <h1 class="posts-title">Posts.</h1>
+          <div class="add-post-root">
+            <nuxt-link to="/new-post">
+              <add-post-button :text="addPost" class="add-post-button"/>
+            </nuxt-link>
+          </div>
+        </div>
         <post-display
           v-for="post in postData"
           :key="post.title"
@@ -50,13 +58,15 @@
       'brews': Brews,
       'post-display': PostDisplay,
       'brewery-logo': BreweryLogo,
-      'add-post-button': Button
+      'add-post-button': Button,
+      'visit-website-button': Button
     },
     // define data needed
     data() {
       return {
         breweryData: {},
         addPost: "Add new post.",
+        visitUrl: "Check out their website.",
         postData: [
         {
           title: "dummy title about placeholder brewery 1",
@@ -106,19 +116,30 @@
   color: #545c64;
   font-weight: bolder;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
+}
+
+.brewery-logo-root {
+  text-align: center;
+  width: 80%;
+}
+
+.brewery-logo {
+  max-height: 250px;
+  max-width: 100%;
+  margin: 0px;
 }
 
 .brews-title, .posts-title {
   font-size: 2em;
+  margin-bottom: 5px;
 }
 
 .brewery-title {
   font-size: 2.5em;
+  margin: 24px 0px;
 }
 
-.header-root {
+.header-root, .main-content-header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,21 +147,33 @@
   margin-bottom: 10px;
 }
 
-.brewery-title {
-  width: 50%;
+.main-content-header {
+  width: 92%;
+  margin: 0px;
 }
-
-.brewery-logo, .add-post-root {
-  width: 25%;
-}
-
 .add-post-root {
+  width: 25%;
   text-align: right;
 }
 
+.posts-title {
+  width: 75%;
+  text-align: left;
+}
+
 .add-post-button {
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 0px;
+}
+
+.brews-table {
+  margin-bottom: 30px;
+}
+
+.visit-website-button {
+  font-size: 1.2em;
+  margin: 0px;
+  margin-bottom: 20px;
 }
 
 .main-root {
