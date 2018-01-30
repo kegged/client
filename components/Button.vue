@@ -1,5 +1,5 @@
 <template>
-  <!-- intro button component with props -->
+  <!-- button component with props -->
   <el-button  
     round
     type="warning"
