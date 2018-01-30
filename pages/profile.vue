@@ -1,10 +1,7 @@
 <template>
   <el-container class="profile-container">
-    <div class="left-side">
-      <profile-button v-for="item in items" :key="item" :text="item" class="page-buttons" />
-    </div>
-    <div class="right-side">
-			<div class="profile-header-root">
+    <el-card class="profile-info-root">
+			<div slot="header" class="profile-header-root">
 				<div class="profile-pic-root">
 					<img src="head.png" class="profile-pic"/>
 				</div> 
@@ -15,7 +12,7 @@
 					<profile-button id="follow-b" :text="follow"></profile-button>
 				</div>
 			</div>
-      <div>
+      <div class="profile-card-body">
 				<h3 id="bio-text">About Me</h3>
         <p id="bio-text">Hey, I'm dummy user. I like dummy user stuff and things.</p>
         <h3 id="bio-text">Local City</h3>
@@ -25,7 +22,22 @@
         <h3 id="bio-text">Favorite Brews</h3>
         <p id="bio-text">Dogfish Head 120 Minute IPA, Bell's Hopslam</p>
       </div>
-    </div>
+    </el-card>
+		<el-card class="link-to-posts-root">
+			<div slot="header" class="link-to-posts-header">
+				<div class="link-to-post-title">
+       		<span>Your Posts</span>
+     	  </div>
+			</div>
+			<div class="link-to-posts-body">
+				<div v-for="(item, i) in posts" :key="i">
+       		<span>{{ i+1 }}.</span>
+					<nuxt-link class="post-link-nuxt" to="/">
+					  <span>{{ item.title }}</span>
+					</nuxt-link>
+     	  </div>
+			</div>
+		</el-card>
   </el-container>
 </template>
 
@@ -39,7 +51,13 @@ export default {
   data(){
     return{
       items: ["Home", "Cities","Breweries", "Forum","About"],
-			follow: "Follow"
+			follow: "Follow",
+			posts: [
+				{ title: "Placeholder title 1" }, 
+				{ title: "Placeholder title 2" }, 
+				{ title: "Placeholder title 3" }, 
+				{ title: "Placeholder title 4" }
+			]
     }
   }
 }
@@ -53,28 +71,11 @@ export default {
 	justify-content: center;
 }
 
-.left-side{
-	width: 13%;
-	background-color: #545c64;
-	margin: 0px 20px;
-	padding: 5px;
-	border-radius: 10px;	
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.page-buttons {
-	margin: 10px 0px;
-	font-size: 1.5em;
-}
-
-.right-side {
-	width: 50%;
+.profile-info-root {
+	width: 45%;
 	margin: 20px;
 	background-color: #DCDCDC;
-	border-radius: 10px;
+
 }
 
 .profile-header-root {
@@ -84,7 +85,6 @@ export default {
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
-	border-radius: 10px;
 }
 
 .name-root {
@@ -93,6 +93,20 @@ export default {
 	font-weight: bold;
 	color:#ebb563;
 	font-size: 1.5em;
+}
+
+.el-card__header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ebb563;
+  font-weight: bolder;
+  background-color: #545c64;
+  font-size: 1.1em;
+}
+
+.el-card__body {
+  background-color: #DCDCDC;
+  padding: 10px;
 }
 
 .profile-pic-root, .follow-root {
@@ -118,6 +132,28 @@ export default {
 
 #bio-text{
   margin-left: 15px;
+}
+
+.link-to-posts-root {
+	width: 20%;
+}
+
+.link-to-posts-header {
+	text-align: center;
+}
+
+.link-to-posts-body {
+	line-height: 2em;
+}
+
+.post-link-nuxt {
+  text-decoration: none;
+  cursor: pointer;
+	color: black;
+}
+
+.post-link-nuxt:hover {
+  text-decoration: underline;
 }
 </style>
 
