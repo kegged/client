@@ -12,11 +12,4 @@
 </script>
 
 <style>
-.brew-logo-root {
-  height: 100%;
-}
-
-.brewery-logo {
-  max-height: 100%;
-}
 </style>

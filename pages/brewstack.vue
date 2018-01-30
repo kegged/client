@@ -3,12 +3,12 @@
     <h1 class="stack-title">The Stack.</h1>
     <div class="brew-stack-image-root">
       <stack :column-min-width="300" :gutter-width="15" :gutter-height="15" monitor-images-loaded>
-        <stack-item class="img-container" v-for="(item, i) in data" :key="i">
+        <stack-item class="img-container" v-for="(item, i) in breweryData" :key="i">
           <el-card :body-style="{ padding: '0px' }" class="stack-card">
-            <img :src="`https://via.placeholder.com/${item.image}`">
+            <img :src="`${item.logoUrl}`">
             <div style="padding: 14px;" class="brewery-name">
-              <nuxt-link to="/cities/city/brewery">
-              <span>{{item.brewery}}</span>
+              <nuxt-link :to="`/cities/${item.city.slug}/${item.slug}`">
+              <span>{{item.name}}</span>
               </nuxt-link>
             </div>
           </el-card>
@@ -20,38 +20,27 @@
 
 <script>
 import { Stack, StackItem } from 'vue-stack-grid'
+import axios from '@/plugins/axios'
 
 export default {
   components: { Stack, StackItem },
   data() {
     return {
-      data: [
-        {brewery: "placeholder", image: "350x150"},
-        {brewery: "placeholder", image: "300x500"},
-        {brewery: "placeholder", image: "400x200"},
-        {brewery: "placeholder", image: "200x200"},
-        {brewery: "placeholder", image: "400x400"},
-        {brewery: "placeholder", image: "300x300"},
-        {brewery: "placeholder", image: "200x250"},
-        {brewery: "placeholder", image: "500x500"},
-        {brewery: "placeholder", image: "300x250"},
-        {brewery: "placeholder", image: "400x200"},
-        {brewery: "placeholder", image: "200x300"},
-        {brewery: "placeholder", image: "300x300"},
-        {brewery: "placeholder", image: "500x200"},
-        {brewery: "placeholder", image: "250x250"},
-        {brewery: "placeholder", image: "300x500"},
-        {brewery: "placeholder", image: "200x200"},
-        {brewery: "placeholder", image: "400x400"},
-        {brewery: "placeholder", image: "200x200"},
-        {brewery: "placeholder", image: "350x150"},
-        {brewery: "placeholder", image: "200x250"},
-        {brewery: "placeholder", image: "500x500"},
-        {brewery: "placeholder", image: "300x250"},
-        {brewery: "placeholder", image: "400x200"},
-        {brewery: "placeholder", image: "200x300"}
-      ]
+      breweryData: {
+      }
     }
+  },
+  computed: {
+      city() {
+        return this.$route.params.city
+      },
+      brewery() {
+        return this.$route.params.brewery
+      }
+  },
+  async created() {
+    const { data } = await axios.get(`/breweries`)
+    this.breweryData = data
   },
   props: ["column-min-width"]
 }
