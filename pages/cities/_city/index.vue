@@ -16,6 +16,7 @@
           <!-- loop through all breweries, create brewery button and link for each -->
           <!-- key and prop are breweries -->
           <div v-for="brewery in breweries" :key="brewery.id">
+            <!-- link to next page built from current city param + brewery.slug from our api -->
             <nuxt-link :to="`/cities/${city}/${brewery.slug}`">
               <brewery-buttons :text="brewery.name" class="brewery-buttons"/>
             </nuxt-link>
@@ -32,31 +33,37 @@
 </template>
 
 <script>
-// import brewery buttons object
+// import button and city logo
+// import axios for api calls
 import { Button } from '@/components'
 import { CityLogo } from '@/components'
 import axios from '@/plugins/axios'
 
 export default {
   components: {
-    // create custom brewery buttons tag
+    // create custom brewery buttons and city logos tags
     'brewery-buttons': Button,
     'city-logos': CityLogo
   },
   data() {
+    // init empty breweries array
     return {
       breweries: [],
     }
   },
   computed: {
+    // save city based on url params
     city() {
       return this.$route.params.city
     },
+    // save logo based route params for each respective png
     logo() {
       return `/cities/${this.city}.png`
     }
   },
+  // call api, populate breweries array with obj from api
   async created() {
+    // this.city from computed is our route param
     const { data } = await axios.get(`/cities/${this.city}`)
     this.breweries = data.breweries
   }
@@ -64,7 +71,7 @@ export default {
 </script>
 
 <style>
-/* flex box for root */
+/* flex box, positioning, color scheme */
 .brewery-buttons-root, .city-logo-root {
   display: flex;
   flex-direction: column;
@@ -92,8 +99,11 @@ export default {
 }
 
 .city-logo {
-  max-height: 250px;
-  max-width: 90%;
+  object-position: center;
+  object-fit: contain;
+  background: transparent;
+  height: 250px;
+  width: 90%;
   margin: 0px;
 }
 </style>

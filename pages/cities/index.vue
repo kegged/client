@@ -4,6 +4,7 @@
     <!-- loop through all cities, create city button with link for each -->
     <!-- key and prop are cities -->
     <div v-for="city in cities" :key="city">
+      <!-- link to next page built from city to lower case based on which button clicked -->
       <nuxt-link :to="`cities/${city.toLowerCase()}`">
         <city-buttons :text="city" class="city-buttons"/>
       </nuxt-link>
@@ -20,7 +21,7 @@ export default {
     // create custom city buttons tag
     'city-buttons': Button
   },
-  // define data
+  // define data as array of cities
   data() {
     return {
       cities: ["Asheville", "Charlotte", "Durham", "Raleigh", "Wilmington" ]

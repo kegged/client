@@ -1,4 +1,5 @@
 <template>
+  <!-- main app template. header, main populated based on nuxt route, footer -->
   <div id="app">
     <x-header id="header"/>
     <nuxt id="main"/>
@@ -7,10 +8,12 @@
 </template>
 
 <script>
+// import header/footer
 import { Header } from '@/components'
 import { Footer } from '@/components'
 
 export default {
+  // create custom html tags from import
   components: {
     'x-header': Header,
     'x-footer': Footer
@@ -19,6 +22,7 @@ export default {
 </script>
 
 <style>
+/* set up overarching flex, color, sizing, margins, padding */
 html {
   font-family: 'Courier', sans-serif;
   background-color: #545c64;

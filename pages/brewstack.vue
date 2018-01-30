@@ -2,12 +2,18 @@
   <div class="brew-stack-root">
     <h1 class="stack-title">The Stack.</h1>
     <div class="brew-stack-image-root">
+      <!-- define stack width 300px with 15px gutters -->
       <stack :column-min-width="300" :gutter-width="15" :gutter-height="15" monitor-images-loaded>
+        <!-- for each item in breweryData... -->
         <stack-item class="img-container" v-for="(item, i) in breweryData" :key="i">
+          <!-- build a card for each stack item -->
           <el-card :body-style="{ padding: '0px' }" class="stack-card">
+            <!-- image pulled from api -->
             <img :src="`${item.logoUrl}`">
             <div style="padding: 14px;" class="brewery-name">
+              <!-- link to website from api -->
               <nuxt-link :to="`/cities/${item.city.slug}/${item.slug}`">
+              <!-- brewery name from api -->
               <span>{{item.name}}</span>
               </nuxt-link>
             </div>
@@ -19,34 +25,32 @@
 </template>
 
 <script>
+// import vue stack grid from npm and axios for api calls
 import { Stack, StackItem } from 'vue-stack-grid'
 import axios from '@/plugins/axios'
 
 export default {
   components: { Stack, StackItem },
+  // empty brewery data object
   data() {
     return {
       breweryData: {
       }
     }
   },
-  computed: {
-      city() {
-        return this.$route.params.city
-      },
-      brewery() {
-        return this.$route.params.brewery
-      }
-  },
+  // async api call, wait for api to return /breweries
+  // send array of objects to our brewery data object
   async created() {
     const { data } = await axios.get(`/breweries`)
     this.breweryData = data
   },
+  // stack grid col width prop
   props: ["column-min-width"]
 }
 </script>
 
 <style>
+/* flexbox containers, color, sizing styles */
 .brew-stack-root {
   display: flex;
   justify-content: center;

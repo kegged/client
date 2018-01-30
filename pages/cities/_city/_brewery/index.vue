@@ -4,12 +4,13 @@
     <!-- brews aside -->
     <el-aside width="30%" class="aside-root">
       <div class="brewery-logo-root">
+        <!-- logo populated from api call -->
         <brewery-logo :breweryLogo="breweryData.logoUrl" class="brewery-logo"/>
       </div>
       <h1 class="brews-title">Brews.</h1>
-      <!-- define props -->
+      <!-- define props as brews array from api call -->
       <brews class="brews-table" :tableData="breweryData.brews"/>
-      <!-- link to brewery's website -->
+      <!-- link to brewery's website from api call -->
       <a :href="`${breweryData.websiteUrl}`" target="_blank">
         <visit-website-button :text="visitUrl" class="visit-website-button"/>
       </a>
@@ -17,7 +18,7 @@
     <el-container>
       <!-- header with logo, name, button to add post -->
       <el-header class="header-root">
-        <!-- components, define props for each -->
+        <!-- components, define props for each from api -->
         <brewery-title :brewery="breweryData.name" class="brewery-title"/>
       </el-header>
       <!-- main area with posts -->
@@ -43,7 +44,7 @@
 </template>
 
 <script>
-  // import all components
+  // import all components and axios for api calling
   import { BreweryTitle } from '@/components'
   import { Brews } from '@/components'
   import { PostDisplay } from '@/components'
@@ -61,9 +62,10 @@
       'add-post-button': Button,
       'visit-website-button': Button
     },
-    // define data needed
+    // define post data needed
     data() {
       return {
+        // init empty breweryData obj
         breweryData: {},
         addPost: "Add new post.",
         visitUrl: "Check out their website.",
@@ -90,6 +92,7 @@
         }]
       }
     },
+    // save city and brewery from route params
     computed: {
       city() {
         return this.$route.params.city
@@ -98,6 +101,7 @@
         return this.$route.params.brewery
       }
     },
+    // call api with city and brewery from route params, send results to breweryData object
     async created() {
       const { data } = await axios.get(`/breweries/${this.city}/${this.brewery}`)
       this.breweryData = data
@@ -106,6 +110,7 @@
 </script>
 
 <style>
+/* flexbox, color/sizing */
 .aside-root, .main-root {
   display: flex;
   align-items: center;
@@ -124,8 +129,11 @@
 }
 
 .brewery-logo {
-  max-height: 250px;
-  max-width: 100%;
+  object-position: center;
+  object-fit: contain;
+  background: transparent;
+  height: 250px;
+  width: 100%;
   margin: 0px;
 }
 
