@@ -30,7 +30,7 @@
         </el-form-item>
         <div class="login-form-controls">
           <x-button
-            text="login"
+            text="Login"
             @click="preformLogin"
           />
           <el-switch
@@ -124,9 +124,9 @@ export default {
 .login-link {
   margin-top: 10px;
   text-decoration: none;
-  color: #ebb563;
-  font-weight: bold;
-  font-size: 0.9em;
+  color: #545c64;
+  font-weight: bolder;
+  font-size: 1em;
   line-height: 1.5em;
 }
 
