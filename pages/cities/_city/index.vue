@@ -84,6 +84,7 @@ export default {
 }
 
 .city-title {
+  text-transform: capitalize;
   width: 100%;
   color: #545c64;
   font-size: 2.4em;

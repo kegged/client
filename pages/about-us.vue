@@ -1,42 +1,52 @@
 <template>
   <div class="about-us-container">
     <el-row class="about-header-root" :gutter="20">
-      <h1 class="about-title">The Kegged Team.</h1>
+      <h1 class="about-us-title">The Kegged Team.</h1>
     </el-row>
     <el-row class="about-content-root">
       <!-- Charles Kenny -->
-      <el-col>
-        <p class="profile"> 
-          <img src="charles-k.jpeg" style="width:120px;height:120px;margin-right:15px;" class="img-circle"> 
-          Lorem Ipsum is simply dummy
-          text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-        </p> 
+      <el-col class="profile-card-root">
+        <el-card class="profile-card">
+          <div slot="header" class="card-header">
+            <img src="charles-k.jpeg" class="about-us-image" alt="pic of charles"> 
+          </div>
+          <div class="card-body">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> 
+          </div>
+        </el-card>
       </el-col>
       <!-- Paul  -->
-      <el-col> 
-        <p class="profile"> 
-          <img src="paul-z2.jpeg" style="width:120px;height:120px;margin-right:15px;" class="img-circle"> 
-          Hey, I'm Paul. I'm originally from Wilmington, NC, but have called Raleigh, NC my home for the past eight years. 
-          I've explored the best breweries NC has to offer, and my current favorite has to be Waterline Brewing Company in Wilmington (try their Kolsch!).
-          Locally, my favorite Raleigh brewery is Big Boss. Hope you enjoy Kegged.
-        </p> 
+      <el-col class="profile-card-root">
+        <el-card class="profile-card">
+          <div slot="header" class="card-header"> 
+            <img src="paul-z2.jpeg" class="about-us-image" alt="pic of paul"> 
+          </div>
+          <div class="card-body">
+            <p>Hey, I'm Paul. I'm originally from Wilmington, NC, but have called Raleigh, NC my home for the past eight years. 
+            I've explored the best breweries NC has to offer, and my current favorite has to be Waterline Brewing Company in Wilmington (try their Kolsch!).
+            Locally, my favorite Raleigh brewery is Big Boss. Hope you enjoy Kegged.</p>
+          </div> 
+        </el-card>
       </el-col>
       <!-- Emmanuel -->
-      <el-col> 
-        <p class="profile"> 
-          <img src="eman.jpg" style="width:120px;height:120px;margin-right:15px;object-fit: cover;" class="img-circle">
-          Hola, I'm Emmanuel. Beer plays a big role in my culture and over the years that role has grown into a passion for me.
-          Here at Kegged we're devoted developers that want to bring both outsiders and locals the best experience when visiting and living in
-          NC with all its great breweries that it has to offer.
-        </p>
+      <el-col class="profile-card-root"> 
+        <el-card class="profile-card">
+          <div slot="header" class="card-header">
+            <img src="eman.jpg" class="about-us-image" alt="pic of eman">
+          </div>
+          <div class="card-body">
+            <p>Hola, I'm Emmanuel. Beer plays a big role in my culture and over the years that role has grown into a passion for me.
+            Here at Kegged we're devoted developers that want to bring both outsiders and locals the best experience when visiting and living in
+            NC with all its great breweries that it has to offer.</p>
+          </div>
+        </el-card>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <style>
-/* fixme: namespace all styles */
 .about-us-container {
   text-align: center;
   display: flex;
@@ -49,36 +59,43 @@
   width: 80%;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
-.about-title {
+.about-us-title {
   color: #545c64;
   font-weight: bolder;
-  margin-top: 0px;
-  margin-bottom: 12px;
+  margin: 0px;
   text-align: center;
 }
 
-.profile {
-  border-radius: 25px;
-  background-color: #ebb563;
-  margin-left:55px;
-  padding-top: 15px;
-  padding-right: 15px;
-  padding-bottom: 20px;
-  padding-left: 15px;
-  width: 250px;
-  border: 1px solid #545c64;
-  color: #545c64;
+.profile-card-root {
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.img-circle {
-  border-radius: 50%;
-  float: left;
+.profile-card {
+  width: 80%;
+  background-color: #DCDCDC;
 }
 
+.el-card__header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bolder;
+  background-color: #545c64;
+}
+
+.el-card__body {
+  background-color: #DCDCDC;
+  padding: 10px;
+}
+
+.about-us-image {
+  max-height: 260px;
+  border: 1px solid #ebb563;
+}
 </style>
-
-

@@ -189,4 +189,30 @@ export default {
 .main-root {
   padding-top: 0px;
 }
+
+.el-card__header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ebb563;
+  font-weight: bolder;
+  background-color: #545c64;
+  font-size: 1.1em;
+}
+
+.el-card__body {
+  background-color: #DCDCDC;
+  padding: 10px;
+}
+
+.el-tag {
+  font-family: 'Courier', sans-serif;
+  border: 1px solid #545c64;
+  margin-right: 5px;
+}
+
+span.el-tag, i.el-tag__close.el-icon-close {
+  color: #f8f8ff;
+  font-weight: bold;
+}
 </style>
+
