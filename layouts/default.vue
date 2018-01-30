@@ -9,8 +9,7 @@
 
 <script>
 // import header/footer
-import { Header } from '@/components'
-import { Footer } from '@/components'
+import { Header, Footer } from '@/components'
 
 export default {
   // create custom html tags from import

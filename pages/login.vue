@@ -141,6 +141,7 @@ export default {
 </style>
 
 <style>
+/* global */
 .el-switch__label.is-active {
   color: #ebb563 !important;
 }

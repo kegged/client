@@ -44,69 +44,71 @@
 </template>
 
 <script>
-  // import all components and axios for api calling
-  import { BreweryTitle } from '@/components'
-  import { Brews } from '@/components'
-  import { PostDisplay } from '@/components'
-  import { BreweryLogo } from '@/components'
-  import { Button } from '@/components'
-  import axios from '@/plugins/axios'
+// import all components and axios for api calling
+import axios from '@/plugins/axios'
+import {
+  BreweryTitle,
+  PostDisplay,
+  BreweryLogo,
+  Button,
+  Brews,
+} from '@/components'
 
-  export default {
-    // create custom html tags
-    components: {
-      'brewery-title': BreweryTitle,
-      'brews': Brews,
-      'post-display': PostDisplay,
-      'brewery-logo': BreweryLogo,
-      'add-post-button': Button,
-      'visit-website-button': Button
-    },
-    // define post data needed
-    data() {
-      return {
-        // init empty breweryData obj
-        breweryData: {},
-        addPost: "Add new post.",
-        visitUrl: "Check out their website.",
-        postData: [
-        {
-          title: "dummy title about placeholder brewery 1",
-          author: "dummy author 1",
-          tags: ["tag 1", "tag 2", "tag 3"]
-        },
-        {
-          title: "dummy title about placeholder brewery 2",
-          author: "dummy author 2",
-          tags: ["tag 4", "tag 5", "tag 6"]
-        },
-        {
-          title: "dummy title about placeholder brewery 3",
-          author: "dummy author 3",
-          tags: ["tag 7", "tag 8", "tag 9"]
-        },
-        {
-          title: "dummy title about placeholder brewery 4",
-          author: "dummy author 4",
-          tags: ["tag 10", "tag 11", "tag 12"]
-        }]
-      }
-    },
-    // save city and brewery from route params
-    computed: {
-      city() {
-        return this.$route.params.city
+export default {
+  // create custom html tags
+  components: {
+    'brewery-title': BreweryTitle,
+    'brews': Brews,
+    'post-display': PostDisplay,
+    'brewery-logo': BreweryLogo,
+    'add-post-button': Button,
+    'visit-website-button': Button
+  },
+  // define post data needed
+  data() {
+    return {
+      // init empty breweryData obj
+      breweryData: {},
+      addPost: "Add new post.",
+      visitUrl: "Check out their website.",
+      postData: [
+      {
+        title: "dummy title about placeholder brewery 1",
+        author: "dummy author 1",
+        tags: ["tag 1", "tag 2", "tag 3"]
       },
-      brewery() {
-        return this.$route.params.brewery
-      }
-    },
-    // call api with city and brewery from route params, send results to breweryData object
-    async created() {
-      const { data } = await axios.get(`/breweries/${this.city}/${this.brewery}`)
-      this.breweryData = data
+      {
+        title: "dummy title about placeholder brewery 2",
+        author: "dummy author 2",
+        tags: ["tag 4", "tag 5", "tag 6"]
+      },
+      {
+        title: "dummy title about placeholder brewery 3",
+        author: "dummy author 3",
+        tags: ["tag 7", "tag 8", "tag 9"]
+      },
+      {
+        title: "dummy title about placeholder brewery 4",
+        author: "dummy author 4",
+        tags: ["tag 10", "tag 11", "tag 12"]
+      }]
     }
+  },
+  // save city and brewery from route params
+  computed: {
+    city() {
+      return this.$route.params.city
+    },
+    brewery() {
+      return this.$route.params.brewery
+    }
+  },
+  // call api with city and brewery from route params, send results to breweryData object
+  async created() {
+    const { data } = await axios.get(`/breweries/${this.city}/${this.brewery}`)
+    this.breweryData = data
   }
+}
 </script>
 
 <style>
