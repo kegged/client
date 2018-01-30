@@ -1,29 +1,147 @@
 <template>
-  <div>
-    <input type="text" v-model="userName" />
-    <input type="text" v-model="passWord" />
-    <button @click="preformLogin" />
+  <div class="login-root">
+    <el-card class="login-card">
+      <!-- Header -->
+      <div slot="header">
+        <span>Login</span>
+      </div>
+      <!-- Form -->
+      <el-form
+        status-icon
+        :model="form"
+        :rules="rules"
+        ref="form"
+      >
+        <el-form-item label="Username" prop="userName">
+          <el-input
+            spellcheck="false"
+            auto-complete="off"
+            type="text"
+            v-model="form.userName"
+          />
+        </el-form-item>
+        <el-form-item label="Password" prop="passWord">
+          <el-input
+            spellcheck="false"
+            auto-complete="off"
+            :type="showPassword ? 'text' : 'password'"
+            v-model="form.passWord"
+          />
+        </el-form-item>
+        <div class="login-form-controls">
+          <x-button
+            text="login"
+            @click="preformLogin"
+          />
+          <el-switch
+            v-model="showPassword"
+            active-color="#ebb563"
+            inactive-text="***"
+            active-text="abc"
+          />
+        </div>
+      </el-form>
+    </el-card>
+    <nuxt-link class="login-link" to="/register">
+      <strong>
+        Create an account
+      </strong>
+    </nuxt-link>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 
+import { Button } from '@/components'
 import { LOGIN } from '@/store/types/actions'
 
 export default {
+  components: { 'x-button': Button },
   data() {
+    // validate username
     return {
-      userName: '',
-      passWord: '',
+      showPassword: false,
+      form: {
+        userName: '',
+        passWord: '',
+      },
+      rules: {
+        userName: [
+          {
+            required: true,
+            message: 'Please enter your username',
+            trigger: 'blur',
+          },
+          {
+            pattern: /^[a-z0-9-_]{3,20}$/i,
+            message: 'Invalid username',
+            trigger: 'blur'
+          }
+        ],
+        passWord: [
+          {
+            required: true,
+            message: 'Please enter your password',
+            trigger: 'blur',
+          },
+          {
+            pattern: /^.{8,20}$/i,
+            message: 'Invalid password',
+            trigger: 'blur',
+          },
+        ],
+      }
     }
   },
   methods: {
     ...mapActions({ login: LOGIN }),
     preformLogin() {
-      const { userName, passWord } = this
-      this.login({ userName, passWord })
+      const { form } = this
+      this.$refs.form.validate(valid => {
+        if (valid) this.login(form)
+        this.form.passWord = ''
+        this.$refs.form.clearValidate()
+        this.$refs.form.validateField('userName')
+      })
     }
   }
 }
 </script>
+
+<style>
+.login-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-card {
+  width: 450px;
+}
+
+.login-link {
+  margin-top: 10px;
+  text-decoration: none;
+  color: #ebb563;
+  font-weight: bold;
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+
+.login-form-controls {
+  margin: 10px 20px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+</style>
+
+<style>
+.el-switch__label.is-active {
+  color: #ebb563 !important;
+}
+</style>
