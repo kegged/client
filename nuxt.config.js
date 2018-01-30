@@ -4,14 +4,15 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'kegged-client',
+    title: 'Kegged.',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'client side repository for kegged app' }
     ],
+    // favicon
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/keg.png' }
     ]
   },
   /*
@@ -36,9 +37,11 @@ module.exports = {
       }
     }
   },
+  // element UI plugin
   plugins: [
     '~/plugins/ElementUI'
   ],
+  // tell app to use element ui
   css: [
     'node_modules/element-ui/lib/theme-chalk/index.css'
   ]

@@ -35,9 +35,9 @@ export default {
   data () {
     return {
       baseNavItems: [
-        { label: 'Home', route: '/'  },
-        { label: 'Cities', route: '/cities' },
-        { label: 'Brew Stack', route: '/brewstack' },
+        { label: 'Home.', route: '/'  },
+        { label: 'Cities.', route: '/cities' },
+        { label: 'Brew Stack.', route: '/brewstack' },
       ]
     }
   },
@@ -45,8 +45,8 @@ export default {
     ...mapGetters(['isAuthenticated']),
     navItems() {
       return this.isAuthenticated ?
-        [ ...this.baseNavItems, { label: 'Profile', route: '/profile' } ] :
-        [ ...this.baseNavItems, { label: 'Login', route: '/login' } ]
+        [ ...this.baseNavItems, { label: 'Profile.', route: '/profile' } ] :
+        [ ...this.baseNavItems, { label: 'Login.', route: '/login' } ]
     }
   }
 }
