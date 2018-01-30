@@ -2,7 +2,6 @@
   <editor />
 </template>
 
-
 <script>
 import { Editor } from '@/components'
 

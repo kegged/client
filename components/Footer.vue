@@ -21,7 +21,6 @@
   </footer>
 </template>
 
-
 <style>
 .footer-root {
   background-color: #545c64;

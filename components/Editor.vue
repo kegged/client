@@ -8,7 +8,7 @@
     >
       <!-- title -->
       <input
-        class="title-input"
+        class="editor-title-input"
         v-model="title"
         placeholder="Post title*"
       />
@@ -25,7 +25,7 @@
       <!-- tag input -->
       <el-input
         ref="saveTagInput"
-        class="input-new-tag"
+        class="editor-input-new-tag"
         v-if="tagInputVisible"
         v-model="tagInput"
         size="mini"
@@ -33,7 +33,7 @@
         @blur="handleTagSave"
       />
       <el-button v-else
-        class="button-new-tag"
+        class="editor-button-new-tag"
         size="small"
         @click="showTagInput"
       >
@@ -79,7 +79,7 @@ export default {
     return {
       title: '',
       post: '# Hello\n## World\nI **like** H~2~0',
-      tags: ['foo'],
+      tags: [],
       tagInput: '',
       tagInputVisible: false,
     }
@@ -147,7 +147,7 @@ export default {
   border: 1px solid #545c64;
 }
 
-.title-input {
+.editor-title-input {
   font-family: 'Courier', sans-serif;
   font-weight: bold;
   background: transparent;
@@ -162,11 +162,7 @@ export default {
   min-width: 400px;
 }
 
-.el-tag {
-  margin-right: 5px;
-}
-
-.button-new-tag {
+.editor-button-new-tag {
   height: 32px;
   line-height: 30px;
   padding-top: 0;
@@ -175,13 +171,16 @@ export default {
   font-weight: bold;
 }
 
-.input-new-tag {
+.editor-input-new-tag {
   height: 32px;
   margin-bottom: 10px;
   width: 90px;
 }
+</style>
 
-.el-tag, .button-new-tag {
+<style>
+/* globals */
+.el-tag, .editor-button-new-tag {
   font-family: 'Courier', sans-serif;
   border: 1px solid #545c64;
 }
@@ -205,4 +204,9 @@ span.el-tag, i.el-tag__close.el-icon-close {
   color: #f8f8ff;
   font-weight: bold;
 }
+
+.el-tag {
+  margin-right: 5px;
+}
 </style>
+

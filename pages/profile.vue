@@ -46,6 +46,7 @@ export default {
 </script>
 
 <style>
+/* fixme: namespace these styles; use more descriptive class names */
 .profile-container {
 	display: flex;
 	align-items: center;

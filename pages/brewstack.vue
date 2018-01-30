@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style>
+/* fixme: namespace all styles */
 /* flexbox containers, color, sizing styles */
 .brew-stack-root {
   display: flex;

@@ -35,8 +35,7 @@
 <script>
 // import button and city logo
 // import axios for api calls
-import { Button } from '@/components'
-import { CityLogo } from '@/components'
+import { Button, CityLogo } from '@/components'
 import axios from '@/plugins/axios'
 
 export default {

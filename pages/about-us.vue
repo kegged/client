@@ -36,6 +36,7 @@
 </template>
 
 <style>
+/* fixme: namespace all styles */
 .about-us-container {
   text-align: center;
   display: flex;

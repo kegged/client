@@ -1,4 +1,14 @@
 <template>
+  <!--
+    fixme: should export a single brew item for mapping to a parent component's list;
+    root template should also be a `<li/>`
+    ex:
+      <template>
+        <ul v-for="item in brewery.brews">
+          <BrewItem :data="item" />
+        </ul>
+      </template>
+  -->
   <div class="brew-table-root">
     <!-- create brews table with tableData prop - will be array of objects-->
     <el-table

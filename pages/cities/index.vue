@@ -18,7 +18,7 @@ import { Button } from '@/components'
 
 export default {
   components: {
-    // create custom city buttons tag
+  // create custom city buttons tag
     'city-buttons': Button
   },
   // define data as array of cities
