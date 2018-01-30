@@ -1,5 +1,5 @@
 import axios from '@/plugins/axios'
-import { Notification } from 'element-ui'
+import { Notification, Message } from 'element-ui'
 
 import * as mutationTypes from '../types/mutations'
 import * as actionTypes from '../types/actions'
@@ -36,12 +36,19 @@ const actions = {
         userName,
         passWord
       })
+      // set user
       axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
       commit(mutationTypes.SET_USER, data)
+      // go home
+      this.app.router.push('/')
+      Notification({
+        title: 'Welcome back',
+        message: `Welcome, ${data.user.firstName || 'user'}!`,
+      })
     } catch (err) {
-      // TODO: handle
-      console.error(err)
-      Notification({ title: 'Error', message: 'Could not login!' })
+      const message = err.response.status === 401 || 404 ?
+        'Incorrect username or password' : 'Could not login'
+      Message({ type: 'error', message })
     }
   }
 }
