@@ -30,17 +30,14 @@ const actions = {
     commit(mutationTypes.UNSET_USER)
   },
 
-  async [actionTypes.LOGIN] ({ commit }, { userName, passWord }) {
+  async [actionTypes.LOGIN] ({ commit }, { form, cbUrl }) {
     try {
-      const { data } = await axios.post('login', {
-        userName,
-        passWord
-      })
+      const { data } = await axios.post('login', form)
       // set user
       axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
       commit(mutationTypes.SET_USER, data)
-      // go home
-      this.app.router.push('/')
+      // redirect
+      this.app.router.push(cbUrl || '/')
       Notification({
         title: 'Welcome back',
         message: `Welcome, ${data.user.firstName || 'user'}!`,
@@ -52,14 +49,14 @@ const actions = {
     }
   },
 
-  async [actionTypes.REGISTER] ({ commit }, { user }) {
+  async [actionTypes.REGISTER] ({ commit }, { form, cbUrl }) {
     try {
-      const { data } = await axios.post('users', user)
+      const { data } = await axios.post('users', form)
       // set user
       axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
       commit(mutationTypes.SET_USER, { token: data.Token, user: data.newUser })
       // go home
-      this.app.router.push('/')
+      this.app.router.push(cbUrl || '/')
       Notification({
         title: 'Welcome to kegged!',
         message: `Welcome, ${data.newUser.firstName || 'user'}!`

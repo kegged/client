@@ -89,6 +89,7 @@ import { Button } from '@/components'
 import { REGISTER } from '@/store/types/actions'
 
 export default {
+  middleware: 'unauth',
   components: { 'x-button': Button },
   data() {
     const emailValidator = async (rule, value, callback) => {
@@ -219,7 +220,10 @@ export default {
     preformRegister() {
       const { form } = this
       this.$refs.form.validate(valid => {
-        if (valid) this.register({ user: { ...form, confirm: undefined } })
+        if (valid) this.register({
+          form: { ...form, confirm: undefined },
+          cbUrl: this.$route.query.cbUrl,
+        })
         this.$refs.form.clearValidate()
       })
     }
