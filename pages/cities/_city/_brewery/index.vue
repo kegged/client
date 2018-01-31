@@ -12,7 +12,10 @@
       <brews class="brews-table" :tableData="brewery.brews"/>
       <!-- link to brewery's website from api call -->
       <a :href="`${brewery.websiteUrl}`" target="_blank">
-        <visit-website-button :text="visitUrl" class="visit-website-button"/>
+        <visit-website-button
+          text="Check out their website."
+          class="visit-website-button"
+        />
       </a>
     </el-aside>
     <el-container>
@@ -28,7 +31,10 @@
           <h1 class="posts-title">Posts.</h1>
           <div class="add-post-root">
             <nuxt-link :to="newPostPath">
-              <add-post-button :text="addPost" class="add-post-button"/>
+              <add-post-button 
+                text="Add new post."
+                class="add-post-button"
+              />
             </nuxt-link>
           </div>
         </div>
@@ -67,8 +73,6 @@ export default {
   // define post data needed
   data() {
     return {
-      addPost: "Add new post.",
-      visitUrl: "Check out their website.",
       postData: [
       {
         title: "dummy title about placeholder brewery 1",
