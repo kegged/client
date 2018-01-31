@@ -10,7 +10,7 @@
       <input
         class="editor-title-input"
         v-model="title"
-        placeholder="Post title*"
+        :placeholder="'*' + titlePlaceholder"
       />
       <!-- tags -->
       <el-tag
@@ -44,14 +44,14 @@
         <el-tab-pane label="Edit">
           <textarea
             class="editor-source"
-            v-model="post"
+            v-model="content"
             @keydown.tab="addIndent"
           />
         </el-tab-pane>
         <el-tab-pane label="Preview">
           <markdown
             class="editor-preview"
-            :source="post"
+            :source="content"
             breaks
             emoji
             typographer
@@ -62,6 +62,7 @@
         type="warning"
         :disabled="readyForSubmission"
         class="editor-save-button"
+        @click="emitSubmit"
       >
         Save post
       </el-button>
@@ -73,13 +74,28 @@
 import markdown from 'vue-markdown'
 
 export default {
+  props: {
+    titlePlaceholder: {
+      type: String,
+      default: 'Post Title',
+    },
+    initialContent: {
+      type: String,
+      default: '# Hello World\n',
+    },
+    initialTitle: {
+      type: String,
+      default: '',
+    },
+    initialTags: [],
+  },
   name: 'App',
   components: { markdown },
   data() {
     return {
-      title: '',
-      post: '# Hello\n## World\nI **like** H~2~0',
-      tags: [],
+      title: this.initialTitle,
+      content: this.initialContent,
+      tags: this.initialTags,
       tagInput: '',
       tagInputVisible: false,
     }
@@ -87,7 +103,7 @@ export default {
   methods: {
     addIndent(e) {
       e.preventDefault()
-      this.post += '\t'
+      this.contet += '\t'
     },
 
     showTagInput() {
@@ -108,12 +124,19 @@ export default {
       }
       this.tagInputVisible = false
       this.tagInput = ''
+    },
+
+    emitSubmit(e) {
+      e.preventDefault()
+
+      const { content, title, tags } = this
+      this.$emit('submit', {content, title, tags})
     }
   },
   computed: {
     readyForSubmission() {
-      const { post, title } = this
-      return !(post.length && title.length)
+      const { content, title } = this
+      return !(content.length && title.length)
     }
   },
 }
@@ -158,8 +181,7 @@ export default {
   font-size: 1.5em;
   padding: 10px -10px;
   margin-bottom: 10px;
-  width: 50%;
-  min-width: 400px;
+  width: 100%;
 }
 
 .editor-button-new-tag {

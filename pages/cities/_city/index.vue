@@ -60,11 +60,14 @@ export default {
       return `/cities/${this.city}.png`
     }
   },
-  // call api, populate breweries array with obj from api
-  async created() {
-    // this.city from computed is our route param
-    const { data } = await axios.get(`/cities/${this.city}`)
-    this.breweries = data.breweries
+  async asyncData({ params, error }) {
+    const { city } = params
+    try {
+      const { data } = await axios.get(`/cities/${city}`)
+      return { breweries: data.breweries }
+    } catch (err) {
+      error({ statusCode: 404, message: 'City not found' })
+    }
   }
 }
 </script>

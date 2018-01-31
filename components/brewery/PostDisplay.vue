@@ -64,6 +64,20 @@
   width: 100%;
 }
 
+.box-card .el-card__header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ebb563;
+  font-weight: bolder;
+  background-color: #545c64;
+  font-size: 1em;
+}
+
+.box-card .el-card__body {
+  background-color: #DCDCDC;
+  padding: 10px;
+}
+
 .post-title-root, .post-tags-root {
   width: 70%;
 }
