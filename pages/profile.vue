@@ -95,7 +95,7 @@ export default {
 	font-size: 1.3em;
 }
 
-.el-card__header {
+.profile-info-root .el-card__header {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #ebb563;
@@ -104,7 +104,7 @@ export default {
   font-size: 1.1em;
 }
 
-.el-card__body {
+.profile-info-root .el-card__body {
   background-color: #DCDCDC;
   padding: 10px;
 }

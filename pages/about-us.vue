@@ -50,21 +50,25 @@
 .about-header-root {
   margin: 0px 0px 20px 0px !important;
 }
+
 .about-us-title {
   color: #545c64;
   font-weight: bolder;
   margin: 0px;
 }
+
 .profile-card-root {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
+
 .profile-card {
   width: 80%;
   background-color: #DCDCDC;
 }
-.el-card__header {
+
+.profile-card .el-card__header {
   display: flex;
   justify-content: center;
   padding-top: 10px;
@@ -72,10 +76,12 @@
   font-weight: bolder;
   background-color: #545c64;
 }
-.el-card__body {
+
+.profile-card .el-card__body {
   background-color: #DCDCDC;
   padding: 10px;
 }
+
 .about-us-image {
   max-height: 260px;
   max-width: 100%;
