@@ -35,6 +35,14 @@
         v-if="isAddingComment"
         @keydown.native.enter="postComment"
         v-model="newComment"/>
+      <h2 class="num-comments">{{ commentsHeader }}</h2>
+      <ul>
+        <comment 
+          class="post-comments" 
+          :comment="comment" 
+          v-for="comment in post.comments" 
+          :key="comment.id"/>
+      </ul>
     </el-col>
   </el-row>
 </template>
@@ -44,9 +52,10 @@ import { mapGetters } from 'vuex'
 import axios from '@/plugins/axios'
 import markdown from 'vue-markdown'
 import { Message } from 'element-ui'
+import { Comment } from '@/components'
 
 export default {
-  components: { markdown },
+  components: { markdown, Comment },
   data() {
     return {
       isAddingComment: false,
@@ -63,14 +72,14 @@ export default {
     async postComment(e) {
       e.preventDefault()
       try { 
-        const { data } = await axios("comments", { 
+        const { data } = await axios.post("comments", { 
           content: this.newComment,
           postId: this.post.id,
           userId: this.user.id
         })
         this.newComment = ""
         this.isAddingComment = false
-        this.post.comments.unshift(data.newComment)
+        this.post.comments.unshift({...data.newComment, user: this.user})
       } catch (error) {
         Message({ 
           type: "error", 
@@ -80,7 +89,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters( ["isAuthenticated", "user"] )
+    ...mapGetters( ["isAuthenticated", "user"] ),
+    commentsHeader() {
+      const { length } = this.post.comments
+
+      if (!length) return ''
+      return `${length} Comment${ length > 1 ? 's' : '' }`
+
+    }
   },
   async asyncData({ params, error }) {
     const { slug } = params
@@ -142,5 +158,13 @@ export default {
   display: block;
   width: 50%;
   min-width: 400px;
+}
+
+.num-comments {
+  color: #545c64;
+}
+
+.post-comments + .post-comments {
+  border-top: 1px solid #ebb563;
 }
 </style>

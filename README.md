@@ -21,6 +21,9 @@ Vue.js, ES6
 - [JWT](https://jwt.io/)
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Sequelize](http://docs.sequelizejs.com/)
+- []()
+- []()
+- []()
 - [Express.js](https://expressjs.com/)
 
 ## Features
