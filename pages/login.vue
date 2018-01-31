@@ -42,7 +42,9 @@
         </div>
       </el-form>
     </el-card>
-    <nuxt-link class="login-link" to="/register">
+    <nuxt-link
+      class="login-link"
+      :to="cbUrl ? '/register?cbUrl=' + cbUrl : '/register'">
       <strong>
         Create an account
       </strong>
@@ -57,6 +59,7 @@ import { Button } from '@/components'
 import { LOGIN } from '@/store/types/actions'
 
 export default {
+  middleware: 'unauth',
   components: { 'x-button': Button },
   data() {
     // validate username
@@ -97,13 +100,17 @@ export default {
   methods: {
     ...mapActions({ login: LOGIN }),
     preformLogin() {
-      const { form } = this
+      const { form, cbUrl } = this
       this.$refs.form.validate(valid => {
-        if (valid) this.login(form)
-        this.form.passWord = ''
+        if (valid) this.login({ form, cbUrl })
         this.$refs.form.clearValidate()
         this.$refs.form.validateField('userName')
       })
+    }
+  },
+  computed: {
+    cbUrl() {
+      return this.$route.query.cbUrl || ''
     }
   }
 }
