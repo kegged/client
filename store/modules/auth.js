@@ -50,6 +50,23 @@ const actions = {
         'Incorrect username or password' : 'Could not login'
       Message({ type: 'error', message })
     }
+  },
+
+  async [actionTypes.REGISTER] ({ commit }, { user }) {
+    try {
+      const { data } = await axios.post('users', user)
+      // set user
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
+      commit(mutationTypes.SET_USER, { token: data.Token, user: data.newUser })
+      // go home
+      this.app.router.push('/')
+      Notification({
+        title: 'Welcome to kegged!',
+        message: `Welcome, ${data.newUser.firstName || 'user'}!`
+      })
+    } catch (err) {
+      Message({ type: 'error', message: err.message })
+    }
   }
 }
 

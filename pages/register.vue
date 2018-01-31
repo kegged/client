@@ -48,6 +48,7 @@
         </el-form-item>
         <el-form-item label="Password" prop="passWord">
           <el-input
+            ref="passWord"
             spellcheck="false"
             auto-complete="off"
             :type="showPassword ? 'text' : 'password'"
@@ -62,6 +63,18 @@
             v-model="form.confirm"
           />
         </el-form-item>
+        <div class="register-form-controls">
+          <x-button
+            @click="preformRegister"
+            text="Register"
+          />
+          <el-switch
+            v-model="showPassword"
+            active-color="#ebb563"
+            inactive-text="***"
+            active-text="abc"
+          />
+        </div>
       </el-form>
     </el-card>
   </div>
@@ -69,14 +82,62 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { isEmail } from 'validator'
 
+import axios from '@/plugins/axios'
 import { Button } from '@/components'
-import { LOGIN } from '@/store/types/actions'
+import { REGISTER } from '@/store/types/actions'
 
 export default {
   components: { 'x-button': Button },
   data() {
-    // validate username
+    const emailValidator = async (rule, value, callback) => {
+      if (value === '') return callback(new Error('Please enter your email'))
+
+      if (!isEmail(value)) {
+        return callback(new Error('Email is invalid'))
+      }
+
+      try {
+        await axios.get(`users/email/${value}`)
+        return callback(new Error('Email is already taken'))
+      } catch (err) { /* swallow 404 */ }
+
+      callback()
+    }
+
+    const userNameValidator = async (rule, value, callback) => {
+      if (value === '') return callback(new Error('Please enter your username'))
+
+      if (!/^[a-z0-9-_]{3,20}$/i.test(value)) {
+        return callback(new Error('Username is invalid'))
+      }
+
+      try {
+        await axios.get(`users/${value}`)
+        return callback(new Error('Username is already taken'))
+      } catch (err) { /* swallow 404 */ }
+
+      callback()
+    }
+
+    const confirmValidator = async (rule, value, callback) => {
+      if (value === '') {
+        return callback(new Error('Please confirm your password'))
+      }
+
+      this.$refs.form.validateField('passWord')
+      if (this.$refs.passWord.validateState === 'error') {
+        return callback(new Error('Initial password is invalid'))
+      }
+      
+      if (value !== this.form.passWord) {
+        return callback(new Error('Does not match password'))
+      }
+
+      callback()
+    }
+
     return {
       showPassword: false,
       form: {
@@ -105,28 +166,26 @@ export default {
         email: [
           {
             required: true,
-            message: 'Please enter your email',
-            trigger: 'blur'
+            validator: emailValidator,
+            trigger: 'change'
           },
           {
-            type: 'email',
-            message: 'Invalid email address',
+            required: true,
+            validator: emailValidator,
             trigger: 'blur',
           }
-          /* call api to see if taken here */
         ],
         userName: [
           {
             required: true,
-            message: 'Please enter your username',
-            trigger: 'blur',
+            validator: userNameValidator,
+            trigger: 'change',
           },
           {
-            pattern: /^[a-z0-9-_]{3,20}$/i,
-            message: 'Invalid username',
-            trigger: 'blur'
+            required: true,
+            validator: userNameValidator,
+            trigger: 'blur',
           }
-          /* call api to see if taken here */
         ],
         passWord: [
           {
@@ -143,19 +202,27 @@ export default {
         confirm: [
           {
             required: true,
-            validator: (rule, value, callback) => {
-              if (value !== this.form.passWord) {
-                return callback(new Error('Does not match password'))
-              }
-              callback()
-            },
+            validator: confirmValidator,
             trigger: 'change',
+          },
+          {
+            required: true,
+            validator: confirmValidator,
+            trigger: 'blur',
           }
         ]
       }
     }
   },
   methods: {
+    ...mapActions({ register: REGISTER  }),
+    preformRegister() {
+      const { form } = this
+      this.$refs.form.validate(valid => {
+        if (valid) this.register({ user: { ...form, confirm: undefined } })
+        this.$refs.form.clearValidate()
+      })
+    }
   }
 }
 </script>
@@ -170,5 +237,13 @@ export default {
 
 .register-card {
   width: 600px;
+}
+
+.register-form-controls {
+  margin: 10px 20px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>
