@@ -36,9 +36,11 @@
             <img src="eman.jpg" class="about-us-image" alt="pic of eman">
           </div>
           <div class="card-body">
-            <p>Hola, I'm Emmanuel. Beer plays a big role in my culture and over the years that role has grown into a passion for me.
-            Here at Kegged we're devoted developers that want to bring both outsiders and locals the best experience when visiting and living in
-            NC with all its great breweries it has to offer.</p>
+            <p>Emmanuel Jean-Michel Frédéric Macron (born 21 December 1977) is the current President of France and ex officio
+               Co-Prince of Andorra, in office since 14 May 2017.
+               Before entering politics, he was a senior civil servant and investment banker. Macron studied philosophy at Paris Nanterre University, completed a Master's
+               of Public Affairs at Sciences Po, and graduated from the École nationale d'administration (ÉNA) in 2004. He worked at the Inspectorate General of Finances,
+               and later became an investment banker at Rothschild & Cie Banque</p>
           </div>
         </el-card>
       </el-col>
