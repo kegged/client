@@ -19,7 +19,7 @@ export default {
     breweryName() { return this.$route.query.breweryName || undefined },
     titlePlaceholder() {
       const { breweryName } = this
-      return breweryName ? `Title about ${breweryName}` : undefined
+      return breweryName ? `Post about ${breweryName}` : undefined
     }
   },
   methods: {

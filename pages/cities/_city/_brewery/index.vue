@@ -5,13 +5,13 @@
     <el-aside width="30%" class="aside-root">
       <div class="brewery-logo-root">
         <!-- logo populated from api call -->
-        <brewery-logo :breweryLogo="breweryData.logoUrl" class="brewery-logo"/>
+        <brewery-logo :breweryLogo="brewery.logoUrl" class="brewery-logo"/>
       </div>
       <h1 class="brews-title">Brews.</h1>
       <!-- define props as brews array from api call -->
-      <brews class="brews-table" :tableData="breweryData.brews"/>
+      <brews class="brews-table" :tableData="brewery.brews"/>
       <!-- link to brewery's website from api call -->
-      <a :href="`${breweryData.websiteUrl}`" target="_blank">
+      <a :href="`${brewery.websiteUrl}`" target="_blank">
         <visit-website-button :text="visitUrl" class="visit-website-button"/>
       </a>
     </el-aside>
@@ -19,7 +19,7 @@
       <!-- header with logo, name, button to add post -->
       <el-header class="header-root">
         <!-- components, define props for each from api -->
-        <brewery-title :brewery="breweryData.name" class="brewery-title"/>
+        <brewery-title :brewery="brewery.name" class="brewery-title"/>
       </el-header>
       <!-- main area with posts -->
       <el-main class="main-root">
@@ -27,7 +27,7 @@
         <div class="main-content-header">
           <h1 class="posts-title">Posts.</h1>
           <div class="add-post-root">
-            <nuxt-link to="/new-post">
+            <nuxt-link :to="newPostPath">
               <add-post-button :text="addPost" class="add-post-button"/>
             </nuxt-link>
           </div>
@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       // init empty breweryData obj
-      breweryData: {},
+      brewery: {},
       addPost: "Add new post.",
       visitUrl: "Check out their website.",
       postData: [
@@ -96,17 +96,22 @@ export default {
   },
   // save city and brewery from route params
   computed: {
-    city() {
+    citySlug() {
       return this.$route.params.city
     },
-    brewery() {
+    brewerySlug() {
       return this.$route.params.brewery
+    },
+    newPostPath() {
+      const { id, name } = this.brewery
+      return `/posts/new?breweryId=${id}&breweryName=${name}`
     }
   },
   // call api with city and brewery from route params, send results to breweryData object
   async created() {
-    const { data } = await axios.get(`/breweries/${this.city}/${this.brewery}`)
-    this.breweryData = data
+    const { citySlug, brewerySlug } = this
+    const { data } = await axios.get(`/breweries/${citySlug}/${brewerySlug}`)
+    this.brewery = data
   }
 }
 </script>
@@ -188,20 +193,6 @@ export default {
 
 .main-root {
   padding-top: 0px;
-}
-
-.el-card__header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #ebb563;
-  font-weight: bolder;
-  background-color: #545c64;
-  font-size: 1em;
-}
-
-.el-card__body {
-  background-color: #DCDCDC;
-  padding: 10px;
 }
 
 .el-tag {

@@ -176,8 +176,7 @@ export default {
   font-size: 1.5em;
   padding: 10px -10px;
   margin-bottom: 10px;
-  width: 50%;
-  min-width: 400px;
+  width: 100%;
 }
 
 .editor-button-new-tag {
