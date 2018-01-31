@@ -67,8 +67,6 @@ export default {
   // define post data needed
   data() {
     return {
-      // init empty breweryData obj
-      brewery: {},
       addPost: "Add new post.",
       visitUrl: "Check out their website.",
       postData: [
@@ -107,11 +105,12 @@ export default {
       return `/posts/new?breweryId=${id}&breweryName=${name}`
     }
   },
-  // call api with city and brewery from route params, send results to breweryData object
-  async created() {
-    const { citySlug, brewerySlug } = this
-    const { data } = await axios.get(`/breweries/${citySlug}/${brewerySlug}`)
-    this.brewery = data
+  // get data asynchronously before component is mounted
+  // and inject it into the component instance via return
+  async asyncData({ params }) {
+    const { city, brewery } = params
+    const { data } = await axios.get(`/breweries/${city}/${brewery}`)
+    return { brewery: data }
   }
 }
 </script>
