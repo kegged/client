@@ -71,12 +71,12 @@ export default {
       this[cmd]()
     },
     goToProfile() {
-      this.$router.push('/profile')
+      this.$router.push(`/users/${this.userName}`)
     }
     
   },
   computed: {
-    ...mapGetters(['isAuthenticated']),
+    ...mapGetters(['isAuthenticated', 'userName']),
     navItems() {
       const baseNavItems = [
         { label: 'Home.', route: '/'  },
