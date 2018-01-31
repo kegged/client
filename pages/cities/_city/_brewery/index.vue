@@ -39,11 +39,10 @@
           </div>
         </div>
         <post-display
-          v-for="post in postData"
-          :key="post.title"
-          :tagsList="post.tags"
-          :postTitle="post.title" 
-          :postAuthor="post.author"/>
+          v-for="post in brewery.posts"
+          :data="post"
+          :key="post.id"
+        />
       </el-main>
     </el-container>
   </el-container>  
