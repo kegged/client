@@ -134,7 +134,7 @@ export default {
   object-position: center;
   object-fit: contain;
   background: transparent;
-  height: 250px;
+  max-height: 250px;
   width: 100%;
   margin: 0px;
 }
@@ -162,12 +162,12 @@ export default {
   margin: 0px;
 }
 .add-post-root {
-  width: 25%;
+  width: 40%;
   text-align: right;
 }
 
 .posts-title {
-  width: 75%;
+  width: 60%;
   text-align: left;
 }
 
@@ -181,7 +181,7 @@ export default {
 }
 
 .visit-website-button {
-  font-size: 1.2em;
+  font-size: 0.8em;
   margin: 0px;
   margin-bottom: 20px;
 }
@@ -196,7 +196,7 @@ export default {
   color: #ebb563;
   font-weight: bolder;
   background-color: #545c64;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 .el-card__body {

@@ -1,11 +1,11 @@
 <template>
   <div class="about-us-container">
-    <el-row class="about-header-root" :gutter="20">
+    <el-row type="flex" justify="center" class="about-header-root">
       <h1 class="about-us-title">The Kegged Team.</h1>
     </el-row>
     <el-row class="about-content-root">
       <!-- Charles Kenny -->
-      <el-col class="profile-card-root">
+      <el-col :xs="24" :sm="12" :md="8" class="profile-card-root">
         <el-card class="profile-card">
           <div slot="header" class="card-header">
             <img src="charles-k.jpeg" class="about-us-image" alt="pic of charles"> 
@@ -17,7 +17,7 @@
         </el-card>
       </el-col>
       <!-- Paul  -->
-      <el-col class="profile-card-root">
+      <el-col :xs="24" :sm="12" :md="8" class="profile-card-root">
         <el-card class="profile-card">
           <div slot="header" class="card-header"> 
             <img src="paul-z2.jpeg" class="about-us-image" alt="pic of paul"> 
@@ -30,7 +30,7 @@
         </el-card>
       </el-col>
       <!-- Emmanuel -->
-      <el-col class="profile-card-root"> 
+      <el-col :xs="24" :sm="12" :md="8" class="profile-card-root"> 
         <el-card class="profile-card">
           <div slot="header" class="card-header">
             <img src="eman.jpg" class="about-us-image" alt="pic of eman">
@@ -47,34 +47,20 @@
 </template>
 
 <style>
-.about-us-container {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-}
-
-.about-header-root, .about-content-root {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 20px;
+.about-header-root {
+  margin: 0px 0px 20px 0px !important;
 }
 
 .about-us-title {
   color: #545c64;
   font-weight: bolder;
   margin: 0px;
-  text-align: center;
 }
 
 .profile-card-root {
-  width: 33%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .profile-card {
@@ -83,6 +69,8 @@
 }
 
 .el-card__header {
+  display: flex;
+  justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
   font-weight: bolder;
@@ -96,6 +84,6 @@
 
 .about-us-image {
   max-height: 260px;
-  border: 1px solid #ebb563;
+  max-width: 100%;
 }
 </style>

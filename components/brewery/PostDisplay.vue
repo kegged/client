@@ -65,11 +65,11 @@
 }
 
 .post-title-root, .post-tags-root {
-  width: 75%;
+  width: 70%;
 }
 
 .view-post-root, .post-author-root {
-  width: 25%;
+  width: 30%;
   text-align: right;
 }
 </style>

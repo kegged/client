@@ -79,7 +79,7 @@ export default {
 }
 
 .brewery-buttons {
-  font-size: 2.4em;
+  font-size: 1.7em;
   margin: 10px;
 }
 

@@ -88,11 +88,11 @@ export default {
 }
 
 .name-root {
-	width: 70%;
+	width: 60%;
 	text-align: center;
 	font-weight: bold;
 	color:#ebb563;
-	font-size: 1.5em;
+	font-size: 1.3em;
 }
 
 .el-card__header {
@@ -110,7 +110,7 @@ export default {
 }
 
 .profile-pic-root, .follow-root {
-	width: 15%;
+	width: 20%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -144,6 +144,7 @@ export default {
 
 .link-to-posts-body {
 	line-height: 2em;
+	font-size: 0.9em;
 }
 
 .post-link-nuxt {
