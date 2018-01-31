@@ -16,10 +16,8 @@ const mutations = {
   },
 
   [mutationTypes.UNSET_USER] (state) {
-    state.token = {
-      token: null,
-      user: null,
-    }
+    state.user = null
+    state.token = null
   }
 }
 
