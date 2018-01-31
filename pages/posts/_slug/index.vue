@@ -15,11 +15,11 @@
           <el-tag
             class="post-tag"
             color="#ebb563"
-            v-for="tag in tags"
-            :key="tag"
+            v-for="tag in post.tags"
+            :key="tag.id"
             :disable-transitions="false"
           >
-            {{tag}}
+            {{tag.tag.name}}
           </el-tag>
         </div>
         <div>
@@ -35,7 +35,6 @@ import axios from '@/plugins/axios'
 import markdown from 'vue-markdown'
 
 export default {
-  data() { return { tags: ['foo', 'bar'] } },
   components: { markdown },
   async asyncData({ params, error }) {
     const { slug } = params

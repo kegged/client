@@ -5,11 +5,13 @@
     <div slot="header" class="post-card-header">
       <!-- title is post's title - need prop -->
       <div class="post-title-root">
-        <span>{{ postTitle }}</span>
+        <span>{{ data.title }}</span>
       </div>
       <!-- button to view post -->
       <div class="view-post-root">
-        <view-post-button :text="text"></view-post-button>
+        <nuxt-link :to="postLink">
+          <x-button text="view post"/>
+        </nuxt-link>
       </div>
     </div>
     <!-- card body -->
@@ -17,36 +19,38 @@
       <!-- display all the tags. need a prop for tagsList to loop through tags array -->
       <div class="post-tags-root">
         <el-tag
-          v-for="postTag in tagsList"
-          :key="postTag"
+          v-for="tag in data.tags"
+          :key="tag.id"
           color="#ebb563"
-          :disable-transitions="false">{{ postTag }}
+          :disable-transitions="false">{{ tag.tag.name }}
         </el-tag>
       </div>
       <!-- author - need prop-->
       <div class="post-author-root">
-        <span class="post-author">By: {{ postAuthor }}</span>
+        <span class="post-author">By: {{ data.user.userName }}</span>
       </div>
     </div>
   </el-card>
 </template>
 
 <script>
-  // import button 
-  import { Button } from '@/components'
+// import button 
+import { Button } from '@/components'
 
-  // export the intro button component with View Post text and export necessary props
-  export default {
-    components: {
-      'view-post-button': Button
-    },
-    data() {
-      return {
-        text: "View Post."
-      }
-    },
-    props: ['postTitle', 'postAuthor', 'tagsList']
+// export the intro button component with View Post text and export necessary props
+export default {
+  components: {
+    'x-button': Button
+  },
+  data() {
+    return {
+    }
+  },
+  props: ['data'],
+  computed: {
+    postLink() { return `/posts/${this.data.slug}` }
   }
+}
 </script>
 
 <style>

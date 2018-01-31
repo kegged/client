@@ -95,7 +95,7 @@ export default {
     return {
       title: this.initialTitle,
       content: this.initialContent,
-      tags: this.initialTags,
+      tags: [],
       tagInput: '',
       tagInputVisible: false,
     }
