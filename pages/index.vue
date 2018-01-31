@@ -3,7 +3,7 @@
 <!-- welcome messages -->
   <div center class="welcome-root">
     <h1 class="welcome-message">Welcome to Kegged.</h1>
-    <h3 class="welcome-message">We like North Carolina beer.</h3>
+    <h3 class="welcome-message">We like North Carolina's beer.</h3>
     <h3 class="welcome-message">We hope you do too.</h3>
     <!-- link to explore cities -->
     <nuxt-link to="/cities">
