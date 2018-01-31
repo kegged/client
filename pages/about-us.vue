@@ -38,7 +38,7 @@
           <div class="card-body">
             <p>Hola, I'm Emmanuel. Beer plays a big role in my culture and over the years that role has grown into a passion for me.
             Here at Kegged we're devoted developers that want to bring both outsiders and locals the best experience when visiting and living in
-            NC with all its great breweries that it has to offer.</p>
+            NC with all its great breweries it has to offer.</p>
           </div>
         </el-card>
       </el-col>
@@ -50,24 +50,20 @@
 .about-header-root {
   margin: 0px 0px 20px 0px !important;
 }
-
 .about-us-title {
   color: #545c64;
   font-weight: bolder;
   margin: 0px;
 }
-
 .profile-card-root {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
-
 .profile-card {
   width: 80%;
   background-color: #DCDCDC;
 }
-
 .el-card__header {
   display: flex;
   justify-content: center;
@@ -76,12 +72,10 @@
   font-weight: bolder;
   background-color: #545c64;
 }
-
 .el-card__body {
   background-color: #DCDCDC;
   padding: 10px;
 }
-
 .about-us-image {
   max-height: 260px;
   max-width: 100%;

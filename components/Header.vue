@@ -24,12 +24,24 @@
             {{ item.label }}
           </el-menu-item>
         </template>
+        <!-- Logout -->
+        <el-dropdown size="small">
+              <span class="drop-down-logout">
+                 <img src="/paul-z2.jpeg" class="profile-header-img"/> <i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+                <el-dropdown-menu slot="dropdown" class="dropdown">
+                  <el-dropdown-item class="logout-links" id="logout">Logout</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        <!-- Logout end -->
       </div>
   </el-menu>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+
+import { LOGOUT } from '@/store/types/actions'
 
 export default {
   data () {
@@ -41,10 +53,14 @@ export default {
       ]
     }
   },
+  methods: {
+    ...mapActions({ logout: LOGOUT })
+  },
   computed: {
     ...mapGetters(['isAuthenticated']),
     navItems() {
       return this.isAuthenticated ?
+        // [ ...this.baseNavItems, { label: 'Signout.', route: '/signout'} ] 
         [ ...this.baseNavItems, { label: 'Profile.', route: '/profile' } ] :
         [ ...this.baseNavItems, { label: 'Login.', route: '/login' } ]
     }
@@ -58,6 +74,7 @@ export default {
   width: 100;
   align-items: center;
   font-size: 0.9em;
+  height: 70px;
 }
 
 .header-title {
@@ -95,7 +112,32 @@ export default {
   margin-left: auto;
   display: flex; 
 }
-
+/* sign out */
+.drop-down-logout{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+}
+.dropdown{
+  background-color: #545c64;
+  border: 2px solid #ebb563;
+}
+.profile-header-img{
+  height: 40px;
+  width: 40px;
+}
+.logout-links{
+  height: 40px;
+  width: 70px;
+  color:#ebb563;
+}
+#logout{
+  font-weight: bold;
+}
+/* Sign-out end */
 .nav-items, .header-title, .header-img, .header-span {
   outline: none !important;
 }
