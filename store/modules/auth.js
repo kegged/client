@@ -68,7 +68,8 @@ const actions = {
 const getters = {
   user: state => state.user,
   token: token => state.token,
-  isAuthenticated: state => state.user !== null
+  isAuthenticated: state => state.user !== null,
+  userName: state => state.user.userName
 }
 
 export default {

@@ -1,7 +1,7 @@
 <template>
   <div class="comments-root">
     <p class="comment-content">{{ comment.content }}</p>
-    <p class="comment-author">by <span class="comment-author-name">{{ comment.user.userName }}</span></p>
+    <p class="comment-author">{{ comment.post.brewery.name }}</p>
   </div>
 </template>
 
@@ -25,9 +25,6 @@ export default {
 .comment-author {
   margin-top: 0px;
   text-align: right;
-}
-
-.comment-author-name {
   font-weight: bold;
 }
 </style>
