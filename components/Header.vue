@@ -30,13 +30,20 @@
             size="small"
           >
             <span class="drop-down-logout">
-              <img src="/paul-z2.jpeg" class="profile-header-img"/>
+              <img src="/head.png" class="profile-header-img"/>
               <i class="el-icon-arrow-down el-icon--right"/>
             </span>
             <el-dropdown-menu
               slot="dropdown"
               class="dropdown"
             >
+              <el-dropdown-item
+                command="goToProfile"
+                class="logout-links"
+                id="logout"
+              >
+                Profile
+              </el-dropdown-item>
               <el-dropdown-item
                 command="logout"
                 class="logout-links"
@@ -62,7 +69,11 @@ export default {
     handleCommand(cmd) {
       console.log(cmd)
       this[cmd]()
+    },
+    goToProfile() {
+      this.$router.push('/profile')
     }
+    
   },
   computed: {
     ...mapGetters(['isAuthenticated']),
