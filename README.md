@@ -60,5 +60,8 @@ Describe and show how to run the tests with code examples.
 - [Udemy](https://www.udemy.com/)
 - UNC Chapel Hill Coding Boot Camp
 
+## Special Shoutout
+- Tame Impala and Phish for providing the audio tracks during the development of this project
+
 ## License
 MIT © [Charles Kenney](https://github.com/Charliekenney23), [Paul Zavattieri](https://github.com/paulz92), [Emmanuel Mosqueda R.](https://github.com/Emmamr)

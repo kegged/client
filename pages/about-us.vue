@@ -11,8 +11,11 @@
             <img src="charles-k.jpeg" class="about-us-image" alt="pic of charles"> 
           </div>
           <div class="card-body">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> 
+            <p>Charles is a legendary British leader who, according to medieval histories and 
+              romances, led the defence of Britain against Saxon invaders in the late 5th and early 
+              6th centuries AD. The details of Charles's story are mainly composed of folklore and 
+              literary invention, and his historical existence is debated and disputed by modern 
+              historians.</p> 
           </div>
         </el-card>
       </el-col>
@@ -23,9 +26,10 @@
             <img src="paul-z2.jpeg" class="about-us-image" alt="pic of paul"> 
           </div>
           <div class="card-body">
-            <p>Hey, I'm Paul. I'm originally from Wilmington, NC, but have called Raleigh, NC my home for the past eight years. 
-            I've explored the best breweries NC has to offer, and my current favorite has to be Waterline Brewing Company in Wilmington (try their Kolsch!).
-            Locally, my favorite Raleigh brewery is Big Boss. Hope you enjoy Kegged.</p>
+            <p>Paul is an American silversmith, engraver, early industrialist, and Patriot in the 
+              American Revolution. He is best known for his midnight ride to alert the colonial 
+              militia in April 1775 to the approach of British forces before the battles of Lexington 
+              and Concord, as dramatized in Henry Wadsworth Longfellow's poem, "Paul's Ride".</p>
           </div> 
         </el-card>
       </el-col>
