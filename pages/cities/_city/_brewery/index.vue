@@ -68,32 +68,6 @@ export default {
     'brewery-logo': BreweryLogo,
     'x-button': Button,
   },
-  // define post data needed
-  data() {
-    return {
-      postData: [
-      {
-        title: "dummy title about placeholder brewery 1",
-        author: "dummy author 1",
-        tags: ["tag 1", "tag 2", "tag 3"]
-      },
-      {
-        title: "dummy title about placeholder brewery 2",
-        author: "dummy author 2",
-        tags: ["tag 4", "tag 5", "tag 6"]
-      },
-      {
-        title: "dummy title about placeholder brewery 3",
-        author: "dummy author 3",
-        tags: ["tag 7", "tag 8", "tag 9"]
-      },
-      {
-        title: "dummy title about placeholder brewery 4",
-        author: "dummy author 4",
-        tags: ["tag 10", "tag 11", "tag 12"]
-      }]
-    }
-  },
   // save city and brewery from route params
   computed: {
     citySlug() {
