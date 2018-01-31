@@ -24,16 +24,29 @@
             {{ item.label }}
           </el-menu-item>
         </template>
-        <!-- Logout -->
-        <el-dropdown size="small">
-              <span class="drop-down-logout">
-                 <img src="/paul-z2.jpeg" class="profile-header-img"/> <i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-                <el-dropdown-menu slot="dropdown" class="dropdown">
-                  <el-dropdown-item class="logout-links" id="logout">Logout</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        <!-- Logout end -->
+        <template v-if="isAuthenticated">
+          <el-dropdown
+            @command="handleCommand"
+            size="small"
+          >
+            <span class="drop-down-logout">
+              <img src="/paul-z2.jpeg" class="profile-header-img"/>
+              <i class="el-icon-arrow-down el-icon--right"/>
+            </span>
+            <el-dropdown-menu
+              slot="dropdown"
+              class="dropdown"
+            >
+              <el-dropdown-item
+                command="logout"
+                class="logout-links"
+                id="logout"
+              >
+                Logout
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </template>
       </div>
   </el-menu>
 </template>
@@ -44,25 +57,23 @@ import { mapGetters, mapActions } from 'vuex'
 import { LOGOUT } from '@/store/types/actions'
 
 export default {
-  data () {
-    return {
-      baseNavItems: [
-        { label: 'Home.', route: '/'  },
-        { label: 'Cities.', route: '/cities' },
-        { label: 'Brew Stack.', route: '/brewstack' },
-      ]
-    }
-  },
   methods: {
-    ...mapActions({ logout: LOGOUT })
+    ...mapActions({ logout: LOGOUT }),
+    handleCommand(cmd) {
+      console.log(cmd)
+      this[cmd]()
+    }
   },
   computed: {
     ...mapGetters(['isAuthenticated']),
     navItems() {
-      return this.isAuthenticated ?
-        // [ ...this.baseNavItems, { label: 'Signout.', route: '/signout'} ] 
-        [ ...this.baseNavItems, { label: 'Profile.', route: '/profile' } ] :
-        [ ...this.baseNavItems, { label: 'Login.', route: '/login' } ]
+      const baseNavItems = [
+        { label: 'Home.', route: '/'  },
+        { label: 'Cities.', route: '/cities' },
+        { label: 'Brew Stack.', route: '/brewstack' },
+      ]
+      return this.isAuthenticated ? baseNavItems :
+        [ ...baseNavItems, { label: 'Login.', route: '/login' } ]
     }
   }
 }
@@ -112,6 +123,7 @@ export default {
   margin-left: auto;
   display: flex; 
 }
+
 /* sign out */
 .drop-down-logout{
   background-color: transparent;
@@ -121,22 +133,22 @@ export default {
   height: 100%;
   cursor: pointer;
 }
-.dropdown{
-  background-color: #545c64;
-  border: 2px solid #ebb563;
-}
+
 .profile-header-img{
   height: 40px;
   width: 40px;
 }
+
 .logout-links{
   height: 40px;
   width: 70px;
   color:#ebb563;
 }
+
 #logout{
   font-weight: bold;
 }
+
 /* Sign-out end */
 .nav-items, .header-title, .header-img, .header-span {
   outline: none !important;
