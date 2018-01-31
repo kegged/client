@@ -12,7 +12,7 @@
       <brews class="brews-table" :tableData="brewery.brews"/>
       <!-- link to brewery's website from api call -->
       <a :href="`${brewery.websiteUrl}`" target="_blank">
-        <button
+        <x-button
           text="Check out their website."
           class="visit-website-button"
         />
@@ -31,7 +31,7 @@
           <h1 class="posts-title">Posts.</h1>
           <div class="add-post-root">
             <nuxt-link :to="newPostPath">
-              <button
+              <x-button
                 text="Add new post."
                 class="add-post-button"
               />

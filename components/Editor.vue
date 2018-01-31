@@ -82,15 +82,20 @@ export default {
     initialContent: {
       type: String,
       default: '# Hello World\n',
-    }
+    },
+    initialTitle: {
+      type: String,
+      default: '',
+    },
+    initialTags: [],
   },
   name: 'App',
   components: { markdown },
   data() {
     return {
-      title: '',
+      title: this.initialTitle,
       content: this.initialContent,
-      tags: [],
+      tags: this.initialTags,
       tagInput: '',
       tagInputVisible: false,
     }
