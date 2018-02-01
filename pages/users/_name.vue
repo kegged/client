@@ -10,15 +10,23 @@
         {{ user.userName }}
       </h1>
       <el-tabs v-model="activeTab">
-        <el-tab-pane label="posts" name="first">
+        <el-tab-pane label="Posts" name="first">
           <ul>
-            <ProfPost v-for="post in user.posts" :key="post.id" :post="post"></ProfPost>
+            <ProfPost 
+              v-for="post in user.posts" 
+              :key="post.id" 
+              :post="post"
+              class="prof-post"></ProfPost>
           </ul>
           <NoContent v-if="!user.posts.length" name="You haven't posted."/>
         </el-tab-pane>
-        <el-tab-pane label="comments" name="second">
+        <el-tab-pane label="Comments" name="second">
           <ul>
-            <ProfComment v-for="comment in user.comments" :key="comment.id" :comment="comment"></ProfComment>
+            <ProfComment 
+              v-for="comment in user.comments" 
+              :key="comment.id" 
+              :comment="comment"
+              class="prof-comment"></ProfComment>
           </ul>
           <NoContent v-if="!user.comments.length" name="No comments found."/>
         </el-tab-pane>
@@ -67,5 +75,9 @@ export default {
   border-bottom: 2px solid #ebb563;
   color: #545c64;
   font-weight: bolder;
+}
+
+.prof-comment + .prof-comment, .prof-post + .prof-post {
+  border-top: 1px solid #ebb563;
 }
 </style>
