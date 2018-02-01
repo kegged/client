@@ -15,7 +15,7 @@
     </p>
     <div class="prof-post-footer">
       <el-tag
-        class="post-tag"
+        class="prof-post-tag"
         color="#ebb563"
         v-for="tag in post.tags"
         :key="tag.id"
@@ -80,5 +80,9 @@ export default {
   margin: 7.5px 0;
   color: #fff !important;
   cursor: pointer;
+}
+
+.prof-post-tag + .prof-post-tag {
+  margin-left: 5px;
 }
 </style>
