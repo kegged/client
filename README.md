@@ -47,11 +47,11 @@ Steps to clone repo to your local machine:
 - Ensure that you have [Yarn](https://yarnpkg.com/en/) installed
 - Run the following in CLI to install all dependencies
     
-    ...yarn...
+    `yarn`
 
 - Run the following in CLI to launch the app in development mode
 
-    ...yarn dev...
+    `yarn dev`
 
 - Navigate to http://localhost:3000 in your browser
 
