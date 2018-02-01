@@ -20,10 +20,11 @@ export default {
 
 .prof-post-title {
   max-width: 80%;
+  margin: 8px 0px 0px 0px;
 }
 
 .prof-post-brewery {
-  margin-top: 0px;
+  margin: 0px 0px 5px 0px;
   text-align: right;
   font-weight: bold;
 }
