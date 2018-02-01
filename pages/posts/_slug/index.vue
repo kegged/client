@@ -23,7 +23,8 @@
           </el-tag>
         </div>
         <div>
-          by<strong>{{ ' ' + post.user.userName }}</strong>
+          <span>by<strong>{{ ' ' + post.user.userName }}</strong></span>
+          <timeago class="viewpost-post-time" :auto-update="true" :since="Date.parse(post.updatedAt)" />
         </div>
       </div>
       <el-button type="text" @click="handleAddComment">Add comment.</el-button>
@@ -137,7 +138,7 @@ export default {
   justify-content: center;
   width: 100%;
   margin: 20px 0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 2px solid #ebb563;
   color: #545c64;
 }
@@ -166,5 +167,11 @@ export default {
 
 .post-comments + .post-comments {
   border-top: 1px solid #ebb563;
+}
+
+.viewpost-post-time {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.8em;
 }
 </style>
