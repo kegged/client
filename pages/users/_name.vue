@@ -11,24 +11,26 @@
       </h1>
       <el-tabs v-model="activeTab">
         <el-tab-pane label="Posts" name="first">
-          <ul>
+          <List
+            :emptyMessage="`${user.userName} has not yet posted.`"
+            :dataSource="user.posts">
             <ProfPost 
               v-for="post in user.posts" 
               :key="post.id" 
               :post="post"
               class="prof-post"></ProfPost>
-          </ul>
-          <NoContent v-if="!user.posts.length" name="You haven't posted."/>
+          </List>
         </el-tab-pane>
         <el-tab-pane label="Comments" name="second">
-          <ul>
+          <List
+            :emptyMessage="`${user.userName} has not yet commented.`"
+            :dataSource="user.comments">
             <ProfComment 
               v-for="comment in user.comments" 
               :key="comment.id" 
               :comment="comment"
-              class="prof-comment"></ProfComment>
-          </ul>
-          <NoContent v-if="!user.comments.length" name="No comments found."/>
+              class="prof-comment"/>
+          </List>
         </el-tab-pane>
       </el-tabs>
     </el-col>
@@ -37,15 +39,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { Message } from 'element-ui'
+
 import axios from '@/plugins/axios'
 import markdown from 'vue-markdown'
-import { Message } from 'element-ui'
-import { ProfPost } from '@/components'
-import { ProfComment } from '@/components'
-import { NoContent } from '@/components'
+import { ProfPost, ProfComment, List } from '@/components'
 
 export default {
-  components: { ProfPost, ProfComment, NoContent },
+  components: { ProfPost, ProfComment, List },
   async asyncData({ error, params }) {
     const { name } = params
     try {
