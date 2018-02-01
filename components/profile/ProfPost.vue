@@ -23,7 +23,10 @@
       >
         {{tag.tag.name}}
       </el-tag>
-      <timeago class="prof-post-time" :auto-update="true" :since="Date.parse(post.updatedAt)" />
+      <timeago
+        class="prof-post-time"
+        :since="Date.parse(post.updatedAt)"
+        :auto-update="5"/>
     </div>
   </div>
 </template>

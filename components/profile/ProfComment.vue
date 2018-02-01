@@ -15,7 +15,9 @@
     </p>
     <p class="prof-comment-content">{{ comment.content }}</p>
     <p class="prof-comment-time">
-      <timeago :auto-update="true" :since="Date.parse(comment.updatedAt)" />
+      <timeago
+        :since="Date.parse(comment.updatedAt)"
+        :auto-update="5"/>
     </p>
   </div>
 </template>
