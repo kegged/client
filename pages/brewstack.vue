@@ -31,18 +31,17 @@ import axios from '@/plugins/axios'
 
 export default {
   components: { Stack, StackItem },
-  // empty brewery data object
-  data() {
-    return {
-      breweryData: {
-      }
-    }
-  },
   // async api call, wait for api to return /breweries
-  // send array of objects to our brewery data object
-  async created() {
-    const { data } = await axios.get(`/breweries`)
-    this.breweryData = data
+  async asyncData({ error }) {
+    try {
+      const { data } = await axios.get(`/breweries`)
+      return { breweryData: data }
+    } catch (err) {
+      error({
+        statusCode: 500,
+        message: 'Something broke ):'
+      })
+    }
   },
   // stack grid col width prop
   props: ["column-min-width"]
