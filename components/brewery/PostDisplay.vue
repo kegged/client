@@ -27,7 +27,8 @@
       </div>
       <!-- author - need prop-->
       <div class="post-author-root">
-        <span class="post-author">By: {{ data.user.userName }}</span>
+        <span class="post-author">By: {{ data.user.userName }}<br></span>
+        <timeago class="brewery-post-time" :auto-update="true" :since="Date.parse(data.updatedAt)" />
       </div>
     </div>
   </el-card>
@@ -89,5 +90,9 @@ export default {
 .view-post-root, .post-author-root {
   width: 30%;
   text-align: right;
+}
+
+.brewery-post-time {
+  font-size: 0.8em;
 }
 </style>

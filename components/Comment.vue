@@ -2,6 +2,7 @@
   <div class="comments-root">
     <p class="comment-content">{{ comment.content }}</p>
     <p class="comment-author">by <span class="comment-author-name">{{ comment.user.userName }}</span></p>
+    <timeago class="viewcomment-post-time" :auto-update="true" :since="Date.parse(comment.updatedAt)" />
   </div>
 </template>
 
@@ -30,5 +31,11 @@ export default {
 
 .comment-author-name {
   font-weight: bold;
+}
+
+.viewcomment-post-time {
+  font-size: 0.8em;
+  text-align: right;
+  margin-bottom: 5px;
 }
 </style>
