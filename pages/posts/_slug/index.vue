@@ -132,6 +132,31 @@ export default {
   color: #545c64;
 }
 
+/* this ensures the headers coming in from the markdown are smaller than the post header */
+.post-content h1 {
+  font-size: 1.6em;
+}
+.post-content h2 {
+  font-size: 1.5em;
+}
+
+.post-content h3 {
+  font-size: 1.4em;
+}
+
+.post-content h4 {
+  font-size: 1.3em;
+}
+
+.post-content h5 {
+  font-size: 1.2em;
+}
+
+.post-content h6 {
+  font-size: 1.1em;
+}
+/* end markdown fix */
+
 .post-footer {
   display: flex;
   align-items: center;
