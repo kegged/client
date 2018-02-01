@@ -27,8 +27,15 @@
       </div>
       <!-- author - need prop-->
       <div class="post-author-root">
-        <span class="post-author">By: {{ data.user.userName }}<br></span>
-        <timeago class="brewery-post-time" :auto-update="true" :since="Date.parse(data.updatedAt)" />
+        <span class="post-author">by
+          <x-link :to="data.user.userName | linkToProfile">
+            {{ data.user.userName }}
+          </x-link>
+        </span>
+        <timeago
+          class="brewery-post-time"
+          :auto-update="5"
+          :since="Date.parse(data.updatedAt)" />
       </div>
     </div>
   </el-card>
@@ -36,12 +43,14 @@
 
 <script>
 // import button 
-import { Button } from '@/components'
+import Link from '@/components/Link'
+import Button from '@/components/Button'
 
 // export the intro button component with View Post text and export necessary props
 export default {
   components: {
-    'x-button': Button
+    'x-button': Button,
+    'x-link': Link,
   },
   data() {
     return {
@@ -50,11 +59,23 @@ export default {
   props: ['data'],
   computed: {
     postLink() { return `/posts/${this.data.slug}` }
+  },
+  filters: {
+    linkToProfile: userName => `/users/${userName}`
   }
 }
 </script>
 
 <style>
+.post-author {
+  font-size: .9em;
+  display: block;
+}
+
+.post-author a {
+  font-size: 1em;
+}
+
 .box-card {
   width: 92%;
   margin-bottom: 10px;

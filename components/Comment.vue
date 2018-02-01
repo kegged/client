@@ -1,14 +1,27 @@
 <template>
   <div class="comments-root">
     <p class="comment-content">{{ comment.content }}</p>
-    <p class="comment-author">by <span class="comment-author-name">{{ comment.user.userName }}</span></p>
-    <timeago class="viewcomment-post-time" :auto-update="true" :since="Date.parse(comment.updatedAt)" />
+    <p class="comment-author">by
+      <x-link :to="comment.user.userName | linkToProfile">
+        <span class="comment-author-name">{{ comment.user.userName }}</span>
+      </x-link>
+    </p>
+    <timeago
+      class="viewcomment-post-time"
+      :since="Date.parse(comment.updatedAt)"
+      :auto-update="5"/>
   </div>
 </template>
 
 <script>
+import Link from './Link'
+
 export default {
-  props: ["comment"]
+  components: { 'x-link': Link },
+  props: ["comment"],
+  filters: {
+    linkToProfile: userName => `/users/${userName}`
+  }
 }
 </script>
 
@@ -30,7 +43,8 @@ export default {
 }
 
 .comment-author-name {
-  font-weight: bold;
+  font-weight: bold !important;
+  font-size: 1.1em;
 }
 
 .viewcomment-post-time {

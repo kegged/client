@@ -6,9 +6,10 @@
     <el-col ref="post-inner"
       :xs="22" :sm="20" :md="16" :lg="14" :xl="12"
     >
-      <h1 class="post-title">
-        {{post.title}}
-      </h1>
+      <div class="post-header">
+        <h1>{{post.title}}</h1>
+          <h4>in <x-link :to="breweryLink">Foobar Brewery</x-link></h4>
+      </div>
       <markdown class="post-content" :source="post.content"/>
       <div class="post-footer">
         <div class="post-tags">
@@ -22,9 +23,16 @@
             {{tag.tag.name}}
           </el-tag>
         </div>
-        <div>
-          <span>by<strong>{{ ' ' + post.user.userName }}</strong></span>
-          <timeago class="viewpost-post-time" :auto-update="true" :since="Date.parse(post.updatedAt)" />
+        <div class="post-meta-data">
+          <span>by<strong>
+            <x-link :to="post.user.userName | linkToProfile" class="post-author-name">
+              {{ ' ' + post.user.userName }}
+            </x-link>
+          </strong></span>
+          <timeago
+            class="viewpost-post-time"
+            :since="Date.parse(post.updatedAt)"
+            :auto-update="5"/>
         </div>
       </div>
       <el-button type="text" @click="handleAddComment">Add comment.</el-button>
@@ -50,13 +58,18 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import axios from '@/plugins/axios'
 import markdown from 'vue-markdown'
 import { Message } from 'element-ui'
-import { Comment } from '@/components'
+
+import axios from '@/plugins/axios'
+import { Comment, Link } from '@/components'
 
 export default {
-  components: { markdown, Comment },
+  components: {
+    markdown,
+    Comment,
+    'x-link': Link,
+  },
   data() {
     return {
       isAddingComment: false,
@@ -65,6 +78,7 @@ export default {
   },
   methods: {
     handleAddComment() {
+      console.log(this.isAuthenticated)
       if (!this.isAuthenticated) {
         return this.$router.push(`/login?cbUrl=${this.$route.fullPath}`)
       }
@@ -80,7 +94,7 @@ export default {
         })
         this.newComment = ""
         this.isAddingComment = false
-        this.post.comments.unshift({...data.newComment, user: this.user})
+        this.post.comments.unshift({ ...data.newComment, user: this.user })
       } catch (error) {
         Message({ 
           type: "error", 
@@ -96,7 +110,10 @@ export default {
 
       if (!length) return ''
       return `${length} Comment${ length > 1 ? 's' : '' }`
-
+    },
+    breweryLink() {
+      const { brewery } = this.post
+      return `/cities/${brewery.city.slug}/${brewery.slug}`
     }
   },
   async asyncData({ params, error }) {
@@ -108,7 +125,10 @@ export default {
       console.error(err)
       error({ statusCode: 404, message: 'Post not found' })
     }
-  }
+  },
+  filters: {
+    linkToProfile: userName => `/users/${userName}`
+  },
 }
 </script>
 
@@ -119,11 +139,23 @@ export default {
   justify-content: center;
 }
 
-.post-title {
-  font-size: 2.4em;
+.post-header {
   border-bottom: 2px solid #ebb563;
   color: #545c64;
   font-weight: bolder;
+}
+
+.post-header h1 {
+  font-size: 2.3em;
+  margin: 5px 0;
+}
+
+.post-header h4 {
+  margin: 3px 0;
+}
+
+.post-header h4 a {
+  font-size: 1.2em;
 }
 
 .post-content {
@@ -198,5 +230,14 @@ export default {
   display: block;
   margin-top: 3px;
   font-size: 0.8em;
+}
+
+.post-author-name {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.post-meta-data {
+  text-align: right;
 }
 </style>
