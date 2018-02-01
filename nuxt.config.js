@@ -39,7 +39,8 @@ module.exports = {
   },
   // element UI plugin
   plugins: [
-    '~/plugins/ElementUI'
+    '~/plugins/ElementUI',
+    '~/plugins/Timeago'
   ],
   // tell app to use element ui
   css: [

@@ -6238,6 +6238,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue-timeago@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/vue-timeago/-/vue-timeago-3.4.2.tgz#291c99370975b0a6f7b65f8745fba878fb545fd8"
+
 vue@^2.1.0, vue@^2.5.13:
   version "2.5.13"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
