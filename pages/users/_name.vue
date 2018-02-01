@@ -13,7 +13,8 @@
         <el-tab-pane label="Posts" name="first">
           <List
             :emptyMessage="`${user.userName} has not yet posted.`"
-            :dataSource="user.posts">
+            :dataSource="user.posts"
+            class="profile-page-list">
             <ProfPost 
               v-for="post in user.posts" 
               :key="post.id" 
@@ -24,7 +25,8 @@
         <el-tab-pane label="Comments" name="second">
           <List
             :emptyMessage="`${user.userName} has not yet commented.`"
-            :dataSource="user.comments">
+            :dataSource="user.comments"
+            class="profile-page-list">
             <ProfComment 
               v-for="comment in user.comments" 
               :key="comment.id" 
@@ -80,5 +82,9 @@ export default {
 
 .prof-comment + .prof-comment, .prof-post + .prof-post {
   border-top: 1px solid #ebb563;
+}
+
+.profile-page-list {
+  margin-top: 20px;
 }
 </style>

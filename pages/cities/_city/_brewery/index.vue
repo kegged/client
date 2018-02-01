@@ -38,11 +38,16 @@
             </nuxt-link>
           </div>
         </div>
-        <post-display
-          v-for="post in brewery.posts"
-          :data="post"
-          :key="post.id"
-        />
+        <List
+          :emptyMessage="`Nobody has posted about ${brewery.name} yet. Be the first!`"
+          :dataSource="brewery.posts"
+          class="brewery-page-list">
+          <post-display
+            v-for="post in brewery.posts"
+            :data="post"
+            :key="post.id"
+          />
+        </List>
       </el-main>
     </el-container>
   </el-container>  
@@ -57,6 +62,7 @@ import {
   BreweryLogo,
   Button,
   Brews,
+  List
 } from '@/components'
 
 export default {
@@ -67,6 +73,7 @@ export default {
     'post-display': PostDisplay,
     'brewery-logo': BreweryLogo,
     'x-button': Button,
+    List
   },
   // save city and brewery from route params
   computed: {
@@ -179,6 +186,16 @@ export default {
 span.el-tag, i.el-tag__close.el-icon-close {
   color: #f8f8ff;
   font-weight: bold;
+}
+
+.brewery-page-list {
+  width: 92%;
+  padding: 0px;
+  margin-top: 20px;
+}
+
+.brewery-page-list .el-card {
+  width: 100%;
 }
 </style>
 
