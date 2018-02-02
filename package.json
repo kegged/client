@@ -9,6 +9,7 @@
     "prestart": "yarn build",
     "build": "nuxt build",
     "start": "nuxt start",
+    "serve": "sh bin/serve.sh",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "yarn lint"
