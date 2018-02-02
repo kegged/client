@@ -26,6 +26,7 @@
         </template>
         <template v-if="isAuthenticated">
           <el-dropdown
+            class="profile-dropdown"
             @command="handleCommand"
             size="small"
           >
@@ -146,6 +147,7 @@ export default {
 }
 
 .profile-header-img{
+  outline: none !important;
   height: 40px;
   width: 40px;
 }
@@ -154,6 +156,10 @@ export default {
   height: 40px;
   width: 70px;
   color:#ebb563;
+}
+
+.profile-dropdown span {
+  outline: none !important;
 }
 
 #logout{
