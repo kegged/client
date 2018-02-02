@@ -71,8 +71,6 @@
 </template>
 
 <script>
-import markdown from 'vue-markdown'
-
 export default {
   props: {
     titlePlaceholder: {
@@ -90,7 +88,6 @@ export default {
     initialTags: [],
   },
   name: 'App',
-  components: { markdown },
   data() {
     return {
       title: this.initialTitle,

@@ -44,7 +44,6 @@ import { mapGetters } from 'vuex'
 import { Message } from 'element-ui'
 
 import axios from '@/plugins/axios'
-import markdown from 'vue-markdown'
 import { ProfPost, ProfComment, List } from '@/components'
 
 export default {
