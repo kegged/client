@@ -58,7 +58,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import markdown from 'vue-markdown'
 import { Message } from 'element-ui'
 
 import axios from '@/plugins/axios'
@@ -66,7 +65,6 @@ import { Comment, Link } from '@/components'
 
 export default {
   components: {
-    markdown,
     Comment,
     'x-link': Link,
   },
