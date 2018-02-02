@@ -1,6 +1,6 @@
 <template>
   <el-row ref="editor"
-    class="editor-container"
+    class="editor editor-container"
     :gutter="10"
   >
     <el-col ref="editor-inner"
@@ -199,32 +199,34 @@ export default {
 
 <style>
 /* globals */
-.el-tag, .editor-button-new-tag {
+.editor .el-tag,
+.editor .editor-button-new-tag {
   font-family: 'Courier', sans-serif;
   border: 1px solid #545c64;
 }
 
-.el-tabs--border-card>.el-tabs__header,
-.el-tabs__item.is-active {
+.editor .el-tabs--border-card>.el-tabs__header,
+.editor .el-tabs__item.is-active {
   color: #f18e1c !important;
 }
 
-.el-tabs--border-card>.el-tabs__header,
-.el-tabs__item {
+.editor .el-tabs--border-card>.el-tabs__header,
+.editor .el-tabs__item {
   color: #ebb563 !important;
 }
 
-.el-tabs__nav-scroll {
+.editor .el-tabs__nav-scroll {
   background: #545c64 !important;
 }
 
 /* tag text */
-span.el-tag, i.el-tag__close.el-icon-close {
+.editor span.el-tag,
+.editor i.el-tag__close.el-icon-close {
   color: #f8f8ff;
   font-weight: bold;
 }
 
-.el-tag {
+.editor .el-tag {
   margin-right: 5px;
 }
 </style>

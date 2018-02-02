@@ -8,7 +8,7 @@
     >
       <div class="post-header">
         <h1>{{post.title}}</h1>
-          <h4>in <x-link :to="breweryLink">Foobar Brewery</x-link></h4>
+          <h4>in <x-link :to="breweryLink">{{ post.brewery.name }}</x-link></h4>
       </div>
       <markdown class="post-content" :source="post.content"/>
       <div class="post-footer">
