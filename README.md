@@ -1,7 +1,7 @@
 ## Kegged.
 A social beer app driven by user activity to discuss and discover breweries and brews in your local city.
 
-Visit [Kegged]()!
+Visit [Kegged](http://174.138.43.93/)!
 
 ## Motivation
 It's tough deciding which brewery to go to on a given day. Breweries are always changing - the draft list changes, the setting changes, and maybe even management changes. Kegged is a one-stop app that allows locals to see cities, breweries, and beer lists and discuss them in an open forum with other users. With Kegged, you'll always know what to expect at a brewery on any given day.
@@ -30,10 +30,10 @@ Vue.js, ES6
 - [Express.js](https://expressjs.com/)
 
 ## Features
-- Vue.js permits for a quick and smooth UI
+- Vue.js with Element UI powers a fast, polished UI
 - Login feature utilizing JWT and bcrypt for secure and simple logins
 - Dynamic, real time updates to brewery pages when user content is added
-- Our Brew Stack Grid to see all breweries in one location in a Pinterest style waterfall
+- Our Brew Stack Grid to see all breweries in one location in a Pinterest-style waterfall
 - User input validation while registering, logging in, and creating posts
 - Custom [API](https://github.com/kegged/api)
 - Brewery logos, brews, links to brewery websites
@@ -63,7 +63,7 @@ We created our own API for this project. The API can be visted at:
 
 ## Credits
 - [Udemy](https://www.udemy.com/)
-- UNC Chapel Hill Coding Boot Camp
+- Inspiration drawn from Untappd, Reddit, and Pinterest
 
 ## Special Shoutout
 - Tame Impala and Phish for providing the audio tracks during the development of this project
