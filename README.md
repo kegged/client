@@ -65,8 +65,5 @@ We created our own API for this project. The API can be visted at:
 - [Udemy](https://www.udemy.com/)
 - Inspiration drawn from Untappd, Reddit, and Pinterest
 
-## Special Shoutout
-- Tame Impala and Phish for providing the audio tracks during the development of this project
-
 ## License
 MIT © [Charles Kenney](https://github.com/Charliekenney23), [Paul Zavattieri](https://github.com/paulz92), [Emmanuel Mosqueda R.](https://github.com/Emmamr)
